@@ -31,15 +31,6 @@ module.exports = (sequelize, Sequelize) => {
     password: {
       type: Sequelize.STRING
     },
-    // confirm_mail: {
-    //   type: Sequelize.BOOLEAN, allowNull: true, defaultValue: "0"
-    // }   ,  
-    // confirmMailToken: {
-    //   type: Sequelize.STRING
-    // },  
-    // tokenExpires: {
-    //   type: Sequelize.DATE
-    // },
     resetPasswordToken: {
       type: Sequelize.STRING
     },  
