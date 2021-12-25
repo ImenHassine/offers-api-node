@@ -6,11 +6,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       primaryKey: true,
     },
-    title: {
-      type: Sequelize.STRING,
-      required: true,
-    },
-    imagePath: {
+    type: {
       type: Sequelize.STRING,
       required: true,
     },
@@ -22,17 +18,8 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       required: true,
     },
-    discount: {
-      type: Sequelize.STRING,
-      required: true,
-    },
-    available: {
-      type: Sequelize.BOOLEAN,
-      allowNull: true,
-      defaultValue: true,
-    },
-    address: {
-      type: Sequelize.STRING,
+    per: {
+      type: Sequelize.STRING, //Month/year/..
       required: true,
     },
     createdBy: {
