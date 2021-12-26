@@ -2,7 +2,7 @@
 
 const db = require("../models");
 const { Op } = db.Sequelize;
-const util = require("../helpers/utils");
+const util = require("../helpers/Utils");
 const statusCode = require("../config/status.config");
 const { getPagination, getPagingData } = require("../helpers/pagination");
 const log4j = require("../config/configLog4js.js");

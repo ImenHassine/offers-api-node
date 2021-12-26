@@ -1,6 +1,6 @@
 "use strict";
 require("dotenv").config();
-const util = require("../helpers/utils");
+const util = require("../helpers/Utils");
 const statusCode = require("../config/status.config.js");
 
 // Middleware will continue if the token is inside the local storage

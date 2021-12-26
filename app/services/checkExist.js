@@ -3,7 +3,7 @@ require("dotenv").config();
 const db = require("../models");
 const { Op } = db.Sequelize;
 
-const util = require("../helpers/utils");
+const util = require("../helpers/Utils");
 const statusCode = require("../config/status.config.js");
 
 exports.checkExist = async (name, modal, arrayCondition, res) => {
