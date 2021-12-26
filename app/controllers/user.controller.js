@@ -1,15 +1,14 @@
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
-var moment = require("moment");
 
-const util = require("../utils/Utils");
+const util = require("../helpers/Utils");
 const Op = db.Sequelize.Op;
 const mail = require("../services/emails/emailProvider");
 const { getPagination, getPagingData } = require("../helpers/pagination");
-const loggerFunction = require("../utils/loggerFunction");
+const loggerFunction = require("../helpers/loggerFunction");
 const log4j = require("../config/configLog4js.js");
-var bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 
 exports.allAccess = (req, res) => {
   res.status(200).send("Public Content.");
@@ -29,21 +28,16 @@ exports.visitorBoard = (req, res) => {
 exports.findAll = (req, res) => {
   console.log("findAll");
   // loggerFunction.loggerFunction(req, res);
-  const {
-    username,
-    firstname,
-    lastname,
-    email,
-    page,
-    size,
-  } = req.query;
+  const { username, firstname, lastname, email, page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
-  var conditionName = username ? { username: { [Op.eq]: username } } : null;
-  var conditionFirstName = firstname
+  const conditionName = username ? { username: { [Op.eq]: username } } : null;
+  const conditionFirstName = firstname
     ? { firstname: { [Op.eq]: firstname } }
     : null;
-  var conditionLastName = lastname ? { lastname: { [Op.eq]: lastname } } : null;
-  var conditionEmail = email ? { email: { [Op.eq]: email } } : null;
+  const conditionLastName = lastname
+    ? { lastname: { [Op.eq]: lastname } }
+    : null;
+  const conditionEmail = email ? { email: { [Op.eq]: email } } : null;
   try {
     User.findAndCountAll({
       where: {
@@ -75,7 +69,7 @@ exports.findAll = (req, res) => {
         console.log("data.rows.length", data.rows.length);
 
         if (data.count > 0) {
-          let tab = getPagingData(data, page, limit);
+          const tab = getPagingData(data, page, limit);
 
           util.setSuccess(200, "User retrieved", tab);
         } else {
@@ -105,7 +99,7 @@ exports.activateUser = async (req, res) => {
   }
   try {
     alteredUser.updatedBy = updatedBy;
-    let updateUser = await User.update(alteredUser, {
+    const updateUser = await User.update(alteredUser, {
       where: { id: id, deleted: 0 },
     });
     if (updateUser != 1) {
@@ -188,7 +182,7 @@ exports.updatedUser = async (req, res) => {
     alteredUser.updatedBy = updatedBy;
     alteredUser.password = bcrypt.hashSync(req.body.password, 8);
 
-    let updateUser = await User.update(alteredUser, {
+    const updateUser = await User.update(alteredUser, {
       where: { id: id, deleted: 0 },
     });
     if (updateUser != 1) {
@@ -245,7 +239,7 @@ exports.patchUser = async (req, res) => {
 
   try {
     alteredUser.updatedBy = updatedBy;
-    let updateUser = await User.update(alteredUser, {
+    const updateUser = await User.update(alteredUser, {
       where: { id: id, deleted: 0 },
     });
     if (updateUser != 1) {
@@ -309,8 +303,8 @@ exports.forgot = async (req, res) => {
         return util.send(res);
       }
       const token = bcrypt.hashSync("test", 8);
-      let resetPasswordToken = token;
-      let resetPasswordExpires = Date.now() + 3600000; // 1 hour
+      const resetPasswordToken = token;
+      const resetPasswordExpires = Date.now() + 3600000; // 1 hour
       console.log("token", token);
       try {
         User.update(
@@ -369,7 +363,7 @@ exports.reset = async (req, res) => {
       }
       // console.log("aaa",bcrypt.compareSync(old_password, data.password))
 
-      let alteredUser = {
+      const alteredUser = {
         password: bcrypt.hashSync(new_password, 8),
         resetPasswordToken: null,
         resetPasswordExpires: null,
@@ -427,7 +421,7 @@ exports.modify = async (req, res) => {
       }
       // console.log("aaa",bcrypt.compareSync(old_password, data.password))
       if (bcrypt.compareSync(old_password, data.password)) {
-        let alteredUser = {
+        const alteredUser = {
           password: bcrypt.hashSync(new_password, 8),
         };
         try {
@@ -497,7 +491,7 @@ exports.updatedUserByAdmin = async (req, res) => {
     }
     alteredUser.updatedBy = updatedBy;
     alteredUser.password = bcrypt.hashSync(req.body.password, 8);
-    let updateUser = await User.update(alteredUser, {
+    const updateUser = await User.update(alteredUser, {
       where: { id: id, deleted: 0 },
     });
     if (updateUser != 1) {

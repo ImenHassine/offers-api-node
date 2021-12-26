@@ -3,16 +3,16 @@ const config = require("../config/auth.config");
 const User = db.user;
 const Role = db.role;
 const log4j = require("../config/configLog4js.js");
-const util = require("../utils/Utils");
-const loggerFunction = require("../utils/loggerFunction");
+const util = require("../helpers/Utils");
+const loggerFunction = require("../helpers/loggerFunction");
 const Op = db.Sequelize.Op;
-var jwt = require("jsonwebtoken");
-var bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 const { omit } = require("lodash");
 
 exports.signup = async (req, res) => {
   loggerFunction.loggerFunction(req, res);
-  let userData = omit(req.body, ["roles"]);
+  const userData = omit(req.body, ["roles"]);
   userData.activate = 1;
   User.create(userData)
     .then((user) => {
@@ -25,7 +25,7 @@ exports.signup = async (req, res) => {
           },
         }).then((roles) => {
           user.setRoles(roles).then(async () => {
-            let userFinded = await User.findByPk(user.id, {
+            const userFinded = await User.findByPk(user.id, {
               attributes: {
                 exclude: [
                   "deleted",
@@ -62,15 +62,13 @@ exports.signup = async (req, res) => {
 
 exports.signin = (req, res) => {
   if (!req.body.username || !req.body.password) {
-    res
-      .status(400)
-      .send({
-        message:
-          "username or password is empty username: " +
-          req.body.username +
-          " password: " +
-          req.body.password,
-      });
+    res.status(400).send({
+      message:
+        "username or password is empty username: " +
+        req.body.username +
+        " password: " +
+        req.body.password,
+    });
   }
   console.log("username", req.body.username);
   console.log("password", req.body.password);
@@ -92,7 +90,7 @@ exports.signin = (req, res) => {
         return util.send(res);
       }
 
-      var passwordIsValid = bcrypt.compareSync(
+      const passwordIsValid = bcrypt.compareSync(
         req.body.password,
         user.password
       );
@@ -105,10 +103,10 @@ exports.signin = (req, res) => {
         });
       }
 
-      var token = jwt.sign({ id: user.id }, config.secret, {
+      const token = jwt.sign({ id: user.id }, config.secret, {
         expiresIn: 86400, // 24 hours
       });
-      var authorities = [];
+      const authorities = [];
       // user.setRoles([3]).then(() => {
       // })
 

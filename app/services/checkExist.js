@@ -6,7 +6,6 @@ const { Op } = db.Sequelize;
 const util = require("../helpers/utils");
 const statusCode = require("../config/status.config.js");
 
-// Middleware will continue if the token is inside the local storage
 exports.checkExist = async (name, modal, arrayCondition, res) => {
   try {
     const theModel = await modal.findOne({
