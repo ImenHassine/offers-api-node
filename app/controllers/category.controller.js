@@ -1,8 +1,8 @@
 const db = require("../models");
 const Model = db.categories;
-const util = require("../helpers/utils");
+const util = require("../helpers/Utils");
 const statusCode = require("../config/status.config");
-const logger = require("../config/Logger");
+const log4j = require("../config/configLog4js.js");
 const { checkExist, checkDoesNotExist } = require("../services/checkExist");
 const {
   getAllModel,
@@ -90,7 +90,9 @@ exports.patch = async (req, res) => {
       await updateModel(nameModel, Model, id, alteredData, arrayCondition)
     ).send(res);
   } else {
-    logger.error(`${nameModel} with code: ${req.body.code} already exist`);
+    log4j.loggererror.error(
+      `${nameModel} with code: ${req.body.code} already exist`
+    );
     util.setError(
       400,
       `${nameModel} with code: ${req.body.code} already exist`,

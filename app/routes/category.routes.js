@@ -1,5 +1,5 @@
 module.exports = (app) => {
-  const category = require("../controllers/category");
+  const category = require("../controllers/category.controller");
   const validate = require("../middleware/validation");
   const { schema, patchSchema } = require("../schema/category");
   const {
