@@ -33,11 +33,9 @@ exports.getAllModel = async (
     if (theModel.count > 0) {
       const tab = getPagingData(page, limit, theModel.rows, theModel.count);
       log4j.loggerinfo.info(`${name} retrieved`);
-
       util.setSuccess(200, `${name} retrieved`, tab);
     } else {
       log4j.loggerinfo.info(`${name} list is empty`);
-
       util.setError(
         200,
         `${name} list is empty`,
@@ -47,7 +45,6 @@ exports.getAllModel = async (
     return util;
   } catch (error) {
     log4j.loggererror.error(`${error}`);
-
     util.setError(400, error);
     return util;
   }
@@ -57,12 +54,10 @@ exports.addModel = async (name, model, newModel) => {
   try {
     const theModel = await model.create(newModel);
     log4j.loggerinfo.info(`${name} Added!`);
-
     util.setSuccess(201, `${name} Added!`, theModel);
     return util;
   } catch (error) {
     log4j.loggererror.error(`${error.message}`);
-
     util.setError(400, error.message);
     return util;
   }
@@ -84,7 +79,6 @@ exports.updateModel = async (name, model, id, updateModel, arrayCondition) => {
       });
       if (theModel != 1) {
         log4j.loggererror.error(`${name}Id does not exist ${id}`);
-
         util.setError(
           200,
           `${name}Id does not exist ${id}`,
@@ -93,13 +87,11 @@ exports.updateModel = async (name, model, id, updateModel, arrayCondition) => {
       } else {
         const theModelAfterupdate = await model.findByPk(id);
         log4j.loggerinfo.info(`${name} updated`);
-
         util.setSuccess(200, `${name} updated`, theModelAfterupdate);
       }
       return util;
     }
     log4j.loggererror.error(`${name}Id does not exist ${id}`);
-
     util.setError(
       200,
       `${name}Id does not exist ${id}`,
@@ -108,7 +100,6 @@ exports.updateModel = async (name, model, id, updateModel, arrayCondition) => {
     return util;
   } catch (error) {
     log4j.loggererror.error(`${error}`);
-
     util.setError(404, error);
     return util;
   }
@@ -138,12 +129,10 @@ exports.getAModel = async (
       return util;
     }
     log4j.loggerinfo.info(`${name} retrieved`);
-
     util.setSuccess(200, `${name} retrieved`, theModel);
     return util;
   } catch (error) {
     log4j.loggererror.error(`${name} getById error`);
-
     util.setError(400, `${name} getById error`, error);
     return util;
   }
@@ -170,7 +159,6 @@ exports.deleteModel = async (name, model, id, updateModel, arrayCondition) => {
     });
     if (theModel != 1) {
       log4j.loggererror.error(`${name}Id does not exist ${id}`);
-
       util.setError(
         200,
         `${name}Id does not exist ${id}`,
@@ -178,13 +166,11 @@ exports.deleteModel = async (name, model, id, updateModel, arrayCondition) => {
       );
     } else {
       log4j.loggerinfo.info(`${name} deleted`);
-
       util.setSuccess(200, `${name} deleted`, theModel);
     }
     return util;
   } catch (error) {
     log4j.loggererror.error(`${error}`);
-
     util.setError(400, error);
     return util;
   }
