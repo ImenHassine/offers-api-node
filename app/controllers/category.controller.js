@@ -36,7 +36,7 @@ exports.add = async (req, res) => {
     title: req.body.title,
     code: req.body.code,
     description: req.body.description,
-    created_by: req.body.created_by,
+    createdBy: req.body.createdBy,
   };
 
   const condition = [{ deleted: 0 }, { code: req.body.code }];
@@ -47,9 +47,9 @@ exports.add = async (req, res) => {
 
 exports.delete = async (req, res) => {
   const { id } = req.params;
-  const { deleted_by } = req.body;
+  const { deletedBy } = req.body;
   const arrayCondition = [{ deleted: 0, id: id }];
-  const alteredData = { deleted: 1, deleted_by: deleted_by };
+  const alteredData = { deleted: 1, deletedBy: deletedBy };
   return (
     await deleteModel(nameModel, Model, id, alteredData, arrayCondition)
   ).send(res);
