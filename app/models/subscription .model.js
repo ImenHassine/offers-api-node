@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Offer = sequelize.define("Offer", {
+  const Subscription = sequelize.define("Subscription", {
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
@@ -36,5 +36,5 @@ module.exports = (sequelize, Sequelize) => {
       defaultValue: 0,
     },
   });
-  return Offer;
+  return Subscription;
 };

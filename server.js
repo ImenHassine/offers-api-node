@@ -66,6 +66,8 @@ require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/category.routes")(app);
 require("./app/routes/offer.routes")(app);
+require("./app/routes/subscription.routes")(app);
+
 
 // initial()
 initiateAdmin();

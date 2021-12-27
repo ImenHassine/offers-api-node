@@ -45,7 +45,16 @@ module.exports = (sequelize, Sequelize) => {
     },  
     resetPasswordExpires: {
       type: Sequelize.DATE
-    },  
+    },
+    hasSubscription: {
+      type: Sequelize.STRING,
+    },
+    startSubscription: {
+      type: Sequelize.STRING
+    },
+    endSubscription: {
+      type: Sequelize.STRING
+    },
     createdBy: {
       type: Sequelize.STRING
     },
