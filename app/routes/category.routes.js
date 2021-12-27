@@ -7,7 +7,7 @@ module.exports = (app) => {
     updatedSchema,
     deletedSchema,
   } = require("../schema/common");
-  const filter = require('../middleware/filter');
+  const filter = require("../middleware/filter");
   const router = require("express").Router();
 
   router.post("/", [validate(schema), validate(createdSchema)], category.add);

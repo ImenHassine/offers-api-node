@@ -65,7 +65,7 @@ app.get("/", (req, res) => {
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/category.routes")(app);
-
+require("./app/routes/offer.routes")(app);
 
 // initial()
 initiateAdmin();
