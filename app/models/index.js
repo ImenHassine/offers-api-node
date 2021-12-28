@@ -51,6 +51,7 @@ db.subscriptions = require("../models/subscription .model")(
   sequelize,
   Sequelize
 );
+db.countries = require("../models/country.model")(sequelize, Sequelize);
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",

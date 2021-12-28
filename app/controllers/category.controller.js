@@ -5,9 +5,11 @@ const statusCode = require("../config/status.config");
 const log4j = require("../config/configLog4js.js");
 const { checkExist, checkDoesNotExist } = require("../services/checkExist");
 const {
+  addModel,
   getAllModel,
   getAModel,
   updateModel,
+  deleteModel,
 } = require("../services/CRUDHandler");
 const nameModel = "Category";
 

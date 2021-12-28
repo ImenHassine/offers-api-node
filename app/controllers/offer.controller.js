@@ -2,9 +2,11 @@ const db = require("../models");
 const Model = db.offers;
 const { checkDoesNotExist } = require("../services/checkExist");
 const {
+  addModel,
   getAllModel,
   getAModel,
   updateModel,
+  deleteModel,
 } = require("../services/CRUDHandler");
 const nameModel = "Offers";
 

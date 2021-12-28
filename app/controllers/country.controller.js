@@ -1,6 +1,9 @@
 const db = require("../models");
-const Model = db.subscriptions;
-const { checkDoesNotExist } = require("../services/checkExist");
+const Model = db.categories;
+const util = require("../helpers/Utils");
+const statusCode = require("../config/status.config");
+const log4j = require("../config/configLog4js.js");
+const { checkExist, checkDoesNotExist } = require("../services/checkExist");
 const {
   addModel,
   getAllModel,
@@ -8,7 +11,7 @@ const {
   updateModel,
   deleteModel,
 } = require("../services/CRUDHandler");
-const nameModel = "Subscription";
+const nameModel = "Country";
 
 exports.findAll = async (req, res) => {
   const { page, size } = req.query;
@@ -32,10 +35,8 @@ exports.findAll = async (req, res) => {
 
 exports.add = async (req, res) => {
   const newData = {
-    type: req.body.type,
-    price: req.body.price,
+    title: req.body.title,
     description: req.body.description,
-    per: req.body.per,
     createdBy: req.body.createdBy,
   };
 
@@ -77,9 +78,27 @@ exports.findByCode = async (req, res) => {
 
 exports.patch = async (req, res) => {
   const { id } = req.params;
-  const alteredData = req.body;
-  const arrayCondition = [{ deleted: 0, id: id }];
-  return (
-    await updateModel(nameModel, Model, id, alteredData, arrayCondition)
-  ).send(res);
+  const condition = [{ deleted: 0 }, { id: id }];
+  await checkExist(nameModel, Model, condition, res);
+
+  const data = await Model.findOne({
+    where: { code: req.body.code },
+  });
+  if (!data) {
+    const alteredData = req.body;
+    const arrayCondition = [{ deleted: 0, id: id }];
+    return (
+      await updateModel(nameModel, Model, id, alteredData, arrayCondition)
+    ).send(res);
+  } else {
+    log4j.loggererror.error(
+      `${nameModel} with code: ${req.body.code} already exist`
+    );
+    util.setError(
+      400,
+      `${nameModel} with code: ${req.body.code} already exist`,
+      statusCode.CODE_ERROR.NOT_EXIST
+    );
+    return util.send(res);
+  }
 };
