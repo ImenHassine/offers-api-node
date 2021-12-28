@@ -1,3 +1,4 @@
+"use strict";
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -68,7 +69,6 @@ require("./app/routes/category.routes")(app);
 require("./app/routes/offer.routes")(app);
 require("./app/routes/subscription.routes")(app);
 
-
 // initial()
 initiateAdmin();
 const PORT = process.env.port || 3000;
@@ -100,7 +100,7 @@ async function initiateAdmin() {
   console.log("username", username);
   console.log("email", email);
   console.log("password", password);
-
+  console.log("ser", { deleted: 0, username: username });
   const userExistsaleusername = await User.findOne({
     where: { deleted: 0, username: username },
     attributes: { exclude: ["deleted"] },
