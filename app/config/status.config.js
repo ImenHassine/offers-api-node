@@ -7,4 +7,8 @@ module.exports = {
     OUT_OF_STOCK: 2004,
     OTHER: 2005,
   },
+  CODE_SUCCESS: {
+    SUCCESS: 2020,
+    LIST_EMPTY: 2021,
+  },
 };
