@@ -1,5 +1,5 @@
 const db = require("../models");
-const Model = db.categories;
+const Model = db.countries;
 const util = require("../helpers/Utils");
 const statusCode = require("../config/status.config");
 const log4j = require("../config/configLog4js.js");
@@ -36,6 +36,7 @@ exports.findAll = async (req, res) => {
 exports.add = async (req, res) => {
   const newData = {
     title: req.body.title,
+    code: req.body.code,
     description: req.body.description,
     createdBy: req.body.createdBy,
   };

@@ -10,6 +10,17 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       required: true,
     },
+    code: {
+      type: Sequelize.STRING,
+      required: true,
+    },
+    description: {
+      type: Sequelize.STRING,
+      required: true,
+    },
+    imagePath: {
+      type: Sequelize.STRING,
+    },
     createdBy: {
       type: Sequelize.STRING,
     },

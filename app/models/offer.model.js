@@ -10,9 +10,6 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       required: true,
     },
-    imagePath: {
-      type: Sequelize.STRING,
-    },
     description: {
       type: Sequelize.STRING,
       required: true,
@@ -29,10 +26,6 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.BOOLEAN,
       allowNull: true,
       defaultValue: true,
-    },
-    address: {
-      type: Sequelize.STRING,
-      required: true,
     },
     createdBy: {
       type: Sequelize.STRING,

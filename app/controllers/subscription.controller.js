@@ -39,9 +39,6 @@ exports.add = async (req, res) => {
     createdBy: req.body.createdBy,
   };
 
-  const condition = [{ deleted: 0 }, { code: req.body.code }];
-  await checkDoesNotExist(nameModel, Model, condition, res);
-
   return (await addModel(nameModel, Model, newData)).send(res);
 };
 
