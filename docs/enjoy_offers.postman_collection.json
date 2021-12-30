@@ -1062,6 +1062,13 @@
 							"path": [
 								"api",
 								"category"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "20",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -1127,7 +1134,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\":\"Clothes\",\n    \"code\":\"10\",\n    \"description\":\"Clothes\",\n    \"createdBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
+							"raw": "{\n    \"title\":\"Qatar\",\n    \"code\":\"10\",\n    \"description\":\"Qatar\",\n    \"createdBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1135,13 +1142,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/category",
+							"raw": "{{url}}/api/country",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"category"
+								"country"
 							]
 						}
 					},
@@ -1455,6 +1462,224 @@
 							"path": [
 								"api",
 								"offer",
+								"2a681c93-9e00-4193-9a89-eb9b429b82b1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "shop",
+			"item": [
+				{
+					"name": "create shop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3MGVkYjRhLTQxMTUtNDg2Mi05ZjFjLWM0N2FkZTQyNzlkMSIsImlhdCI6MTYxODMxNjY4NiwiZXhwIjoxNjE4NDAzMDg2fQ.DFiIhcT8WA3VhK5O_wb0AdW6gq3dksc1oBRgmUvl61Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Clothes\",\n    \"code\":\"10\",\n    \"description\":\"Clothes\",\n    \"createdBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/shop",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"shop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update shop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Clothes\",\n    \"code\":\"20\",\n    \"description\":\"Clothes\",\n    \"updatedBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/shop/96c1bac2-6270-4fc0-a809-7d7bf3706d80",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"shop",
+								"96c1bac2-6270-4fc0-a809-7d7bf3706d80"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get shop",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBhMDE2ZWQxLWMzOWUtNDI2Mi1hMWMxLTYxODA4ZDc0ZjA0ZSIsImlhdCI6MTYxODk5NDI4NywiZXhwIjoxNjE5MDgwNjg3fQ.69wOtdCj9j304JPVmyHEpCAQHLt7sgzHL1cWXTZOoJM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/shop",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"shop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one shop",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBhMDE2ZWQxLWMzOWUtNDI2Mi1hMWMxLTYxODA4ZDc0ZjA0ZSIsImlhdCI6MTYxODk5NDI4NywiZXhwIjoxNjE5MDgwNjg3fQ.69wOtdCj9j304JPVmyHEpCAQHLt7sgzHL1cWXTZOoJM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/shop",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"shop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete shop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"activity\":\"recharge\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/shop/2a681c93-9e00-4193-9a89-eb9b429b82b1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"shop",
 								"2a681c93-9e00-4193-9a89-eb9b429b82b1"
 							]
 						}

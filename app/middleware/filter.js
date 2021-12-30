@@ -11,6 +11,7 @@ const filter = () => (req, res, next) => {
       title: "title",
       code: "code",
       description: "description",
+      name: "name",
     };
     const arrayCondition = [{ deleted: 0 }];
     const order = [];
@@ -22,32 +23,32 @@ const filter = () => (req, res, next) => {
     for (let index = 0; index < keys.length; index++) {
       const key = keys[index];
       const value = values[index];
-      let start_date = null;
-      let end_date = null;
+      let startDate = null;
+      let endDate = null;
       // //////////////date////////////////////////
-      if (key == "start_date") start_date = value;
-      if (key == "end_date") end_date = value;
+      if (key == "startDate") startDate = value;
+      if (key == "endDate") endDate = value;
 
       // /////////////////filter date//////////////
       let conditionDate = null;
-      if (start_date && end_date) {
+      if (startDate && endDate) {
         conditionDate = {
           createdAt: {
-            [Op.between]: [start_date, moment(end_date).add(1, "days")],
+            [Op.between]: [startDate, moment(endDate).add(1, "days")],
           },
         };
         arrayCondition.push(conditionDate);
       }
-      if (start_date && !end_date) {
+      if (startDate && !endDate) {
         conditionDate = {
-          createdAt: { [Op.gte]: start_date },
+          createdAt: { [Op.gte]: startDate },
         };
         arrayCondition.push(conditionDate);
       }
 
-      if (!start_date && end_date) {
+      if (!startDate && endDate) {
         conditionDate = {
-          createdAt: { [Op.lte]: moment(end_date).add(1, "days") },
+          createdAt: { [Op.lte]: moment(endDate).add(1, "days") },
         };
         arrayCondition.push(conditionDate);
       }
@@ -59,7 +60,7 @@ const filter = () => (req, res, next) => {
           const orderName = [orderNameSplit[1], value];
           order.push(orderName);
         }
-      } else if (!start_date && !end_date) {
+      } else if (!startDate && !endDate) {
         if (name[key]) {
           // eslint-disable-next-line prefer-const
           let filterCondition = {};
