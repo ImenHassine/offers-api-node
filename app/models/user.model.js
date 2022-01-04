@@ -8,70 +8,71 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true,
     },
     username: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     email: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     city: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     zip_code: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     lastname: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     firstname: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     activate: {
-      type:Sequelize.BOOLEAN, allowNull: true, defaultValue: "0"
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+      defaultValue: "0",
     },
     password: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     // confirm_mail: {
     //   type: Sequelize.BOOLEAN, allowNull: true, defaultValue: "0"
-    // }   ,  
+    // }   ,
     // confirmMailToken: {
     //   type: Sequelize.STRING
-    // },  
+    // },
     // tokenExpires: {
     //   type: Sequelize.DATE
     // },
     resetPasswordToken: {
-      type: Sequelize.STRING
-    },  
+      type: Sequelize.STRING,
+    },
     resetPasswordExpires: {
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
     },
     hasSubscription: {
       type: Sequelize.STRING,
     },
     startSubscription: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     endSubscription: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     createdBy: {
-      type: Sequelize.STRING
+      type: Sequelize.UUID,
     },
     updatedBy: {
-      type: Sequelize.STRING
+      type: Sequelize.UUID,
     },
     deletedBy: {
-      type: Sequelize.STRING
+      type: Sequelize.UUID,
     },
     deleted: {
       type: Sequelize.INTEGER,
-      defaultValue: 0
-    }
-
+      defaultValue: 0,
+    },
   });
   User.beforeCreate(async (user, options) => {
-   user.password=bcrypt.hashSync(user.password, 8)
+    user.password = bcrypt.hashSync(user.password, 8);
   });
   return User;
 };

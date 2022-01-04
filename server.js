@@ -50,7 +50,7 @@ app.use(function (err, req, res, next) {
 });
 // db.sequelize.sync();
 
-db.sequelize.sync({alter:true});
+db.sequelize.sync({ alter: true });
 // //force: true will drop the table if it already exists
 // db.sequelize.sync({force: true}).then(() => {
 //   console.log('Drop and Resync Database with { force: true }');
@@ -70,6 +70,8 @@ require("./app/routes/offer.routes")(app);
 require("./app/routes/subscription.routes")(app);
 require("./app/routes/country.routes")(app);
 require("./app/routes/shop.routes")(app);
+require("./app/routes/categoryCountry.routes")(app);
+
 
 // initial()
 initiateAdmin();

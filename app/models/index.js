@@ -47,7 +47,6 @@ db.user = require("../models/user.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
 db.categories = require("../models/category.model")(sequelize, Sequelize);
 db.offers = require("../models/offer.model")(sequelize, Sequelize);
-db.shops = require("../models/shop.model")(sequelize, Sequelize);
 db.subscriptions = require("../models/subscription .model")(
   sequelize,
   Sequelize

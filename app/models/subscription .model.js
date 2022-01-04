@@ -19,17 +19,17 @@ module.exports = (sequelize, Sequelize) => {
       required: true,
     },
     per: {
-      type: Sequelize.STRING, //Month/year/..
+      type: Sequelize.STRING, // Month/year/..
       required: true,
     },
     createdBy: {
-      type: Sequelize.STRING,
+      type: Sequelize.UUID,
     },
     updatedBy: {
-      type: Sequelize.STRING,
+      type: Sequelize.UUID,
     },
     deletedBy: {
-      type: Sequelize.STRING,
+      type: Sequelize.UUID,
     },
     deleted: {
       type: Sequelize.INTEGER,

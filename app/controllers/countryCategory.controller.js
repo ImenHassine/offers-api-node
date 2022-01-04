@@ -1,5 +1,5 @@
 const db = require("../models");
-const Model = db.offers;
+const Model = db.countries_categories;
 const { checkDoesNotExist } = require("../services/checkExist");
 const {
   addModel,
@@ -8,7 +8,7 @@ const {
   updateModel,
   deleteModel,
 } = require("../services/CRUDHandler");
-const nameModel = "Offers";
+const nameModel = "country_category";
 
 exports.findAll = async (req, res) => {
   const { page, size } = req.query;
@@ -32,12 +32,8 @@ exports.findAll = async (req, res) => {
 
 exports.add = async (req, res) => {
   const newData = {
-    title: req.body.title,
-    price: req.body.price,
-    discount: req.body.discount,
-    discount: req.body.discount,
-    ShopId: req.body.ShopId,
-    CountryCategoryId: req.body.CountryCategoryId,
+    CategoryId: req.body.CategoryId,
+    CountryId: req.body.CountryId,
     createdBy: req.body.createdBy,
   };
 

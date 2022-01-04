@@ -22,13 +22,13 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     createdBy: {
-      type: Sequelize.STRING,
+      type: Sequelize.UUID,
     },
     updatedBy: {
-      type: Sequelize.STRING,
+      type: Sequelize.UUID,
     },
     deletedBy: {
-      type: Sequelize.STRING,
+      type: Sequelize.UUID,
     },
     deleted: {
       type: Sequelize.INTEGER,

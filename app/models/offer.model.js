@@ -28,13 +28,13 @@ module.exports = (sequelize, Sequelize) => {
       defaultValue: true,
     },
     createdBy: {
-      type: Sequelize.STRING,
+      type: Sequelize.UUID,
     },
     updatedBy: {
-      type: Sequelize.STRING,
+      type: Sequelize.UUID,
     },
     deletedBy: {
-      type: Sequelize.STRING,
+      type: Sequelize.UUID,
     },
     deleted: {
       type: Sequelize.INTEGER,
