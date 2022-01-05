@@ -47,11 +47,17 @@ db.user = require("../models/user.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
 db.categories = require("../models/category.model")(sequelize, Sequelize);
 db.offers = require("../models/offer.model")(sequelize, Sequelize);
+db.shops = require("../models/shop.model")(sequelize, Sequelize);
 db.subscriptions = require("../models/subscription .model")(
   sequelize,
   Sequelize
 );
 db.countries = require("../models/country.model")(sequelize, Sequelize);
+db.countries_categories = require("../models/countryCategory.model")(
+  sequelize,
+  Sequelize
+);
+db.documents = require("../models/document.model")(sequelize, Sequelize);
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",
@@ -63,6 +69,32 @@ db.user.belongsToMany(db.role, {
   foreignKey: "userId",
   // otherKey: "roleId"
 });
+
+db.categories.hasMany(db.countries_categories, { as: "countries_categories" });
+db.countries_categories.belongsTo(db.categories);
+db.countries.hasMany(db.countries_categories, { as: "countries_categories" });
+db.countries_categories.belongsTo(db.countries);
+
+db.shops.hasMany(db.offers, { as: "shops" });
+db.offers.belongsTo(db.shops);
+
+db.countries_categories.hasMany(db.offers, { as: "countries_categories" });
+db.offers.belongsTo(db.countries_categories);
+
+db.subscriptions.hasMany(db.user, { as: "subscriptions" });
+db.user.belongsTo(db.subscriptions);
+
+db.shops.hasMany(db.documents, { as: "documents_shops" });
+db.documents.belongsTo(db.shops);
+
+db.offers.hasMany(db.documents, { as: "documents_offers" });
+db.documents.belongsTo(db.offers);
+
+db.categories.hasOne(db.documents);
+db.documents.belongsTo(db.categories);
+
+db.countries.hasOne(db.documents);
+db.documents.belongsTo(db.countries);
 
 db.ROLES = ["user", "admin", "visitor"];
 

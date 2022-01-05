@@ -71,7 +71,7 @@ require("./app/routes/subscription.routes")(app);
 require("./app/routes/country.routes")(app);
 require("./app/routes/shop.routes")(app);
 require("./app/routes/categoryCountry.routes")(app);
-
+require("./app/routes/document.routes")(app);
 
 // initial()
 initiateAdmin();
