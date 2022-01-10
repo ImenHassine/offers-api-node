@@ -1,3 +1,4 @@
+const  Util  = require("../helpers/Utils");
 const db = require("../models");
 const Model = db.offers;
 const { checkDoesNotExist } = require("../services/checkExist");
@@ -35,11 +36,22 @@ exports.add = async (req, res) => {
     title: req.body.title,
     price: req.body.price,
     discount: req.body.discount,
-    discount: req.body.discount,
+    description: req.body.description,
+    images: req.body.images,
     ShopId: req.body.ShopId,
     CountryCategoryId: req.body.CountryCategoryId,
     createdBy: req.body.createdBy,
   };
+// Test shopId exist
+// Test countryCatID exist
+// Import image
+
+var documentData = Util.uploadDocument(req.body.documents, req.body.ShopId, 'many');
+if (documentData.etat == 'echec') {
+  logger.error(`Echec ${documentData.info}`);
+  util.setError(400, documentData.info, status_code.CODE_ERROR.TYPE);
+  return util.send(res);
+}
 
   return (await addModel(nameModel, Model, newData)).send(res);
 };
