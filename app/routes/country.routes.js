@@ -9,8 +9,17 @@ module.exports = (app) => {
   } = require("../schema/common");
   const filter = require("../middleware/filter");
   const router = require("express").Router();
+  const multer = require('multer');
+  const upload = multer({dest: 'images'})
 
-  router.post("/", [validate(schema), validate(createdSchema)], country.add);
+  router.post("/", [upload.single('icon'),(req, res,next) => {
+    console.log('req.headers', req.headers);
+    console.log('req.body', req.body);
+    console.log('req.file', req.file);
+    req.body.file = req.file;
+    next();
+  },
+  validate(schema), validate(createdSchema)], country.add);
   router.get("/", filter(), country.findAll);
   router.get("/:id", country.findOne);
   router.delete("/:id", validate(deletedSchema), country.delete);

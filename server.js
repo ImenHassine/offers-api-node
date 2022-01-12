@@ -5,7 +5,7 @@ const cors = require("cors");
 const log4js = require("log4js");
 const log4j = require("./app/config/configLog4js.js");
 const key = require("./app/config/key.config");
-
+const path = require('path');
 require("dotenv/config");
 
 const swaggerUi = require("swagger-ui-express");
@@ -56,7 +56,8 @@ db.sequelize.sync({ alter: true });
 //   console.log('Drop and Resync Database with { force: true }');
 //   initial();
 // });
-
+app.use('/images', express.static('images'));
+// app.use('/images', express.static(path.join(__dirname, 'images')));
 // simple route
 app.get("/", (req, res) => {
   res.redirect("/docs");

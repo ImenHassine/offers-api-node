@@ -38,6 +38,9 @@ exports.add = async (req, res) => {
     title: req.body.title,
     code: req.body.code,
     description: req.body.description,
+    imagePath: req.file.path,
+    imageSize: req.file.size,
+    imageMimetype: req.file.mimetype,
     createdBy: req.body.createdBy,
   };
 
