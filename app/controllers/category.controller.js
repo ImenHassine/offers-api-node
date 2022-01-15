@@ -37,6 +37,9 @@ exports.add = async (req, res) => {
   const newData = {
     title: req.body.title,
     code: req.body.code,
+    imagePath: req.file.path,
+    imageSize: req.file.size,
+    imageMimetype: req.file.mimetype,
     description: req.body.description,
     createdBy: req.body.createdBy,
   };

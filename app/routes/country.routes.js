@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 module.exports = (app) => {
   const country = require("../controllers/country.controller");
   const validate = require("../middleware/validation");
