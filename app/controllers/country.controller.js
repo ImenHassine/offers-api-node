@@ -34,6 +34,10 @@ exports.findAll = async (req, res) => {
 };
 
 exports.add = async (req, res) => {
+  console.log('body in add',req.body)
+  console.log('req.files in add',req.files)
+  // console.log('body',req)
+
   const newData = {
     title: req.body.title,
     code: req.body.code,

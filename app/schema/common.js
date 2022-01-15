@@ -35,9 +35,15 @@ const deletedSchema = yup.object({
   }),
 });
 
+const fileSchema = yup.object({
+  body: yup.object({
+    file: yup.object().required("file is a required field"),
+  }),
+});
 const schema = {
   createdSchema: createdSchema,
   updatedSchema: updatedSchema,
   deletedSchema: deletedSchema,
+  fileSchema: fileSchema,
 };
 module.exports = schema;

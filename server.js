@@ -34,7 +34,8 @@ app.use(
 );
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
+
 // app.use(log4js.connectLogger(log4j.loggercheese, { level: "info" }));
 
 // app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));

@@ -6,7 +6,6 @@ const schema = yup.object({
     title: yup.string().required("title is a required field"),
     code: yup.string().required("code is a required field"),
     description: yup.string().required("description is a required field"),
-    file: yup.object().required("Icon is a required field"),
   }),
   // file: yup.object().required("Icon is a required field"),
 });

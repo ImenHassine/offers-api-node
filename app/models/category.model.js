@@ -23,6 +23,12 @@ module.exports = (sequelize, Sequelize) => {
       imagePath: {
         type: Sequelize.STRING,
       },
+      imageSize: {
+        type: Sequelize.STRING,
+      },
+      imageMimetype: {
+        type: Sequelize.STRING,
+      },
       createdBy: {
         type: Sequelize.UUID,
       },

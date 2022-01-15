@@ -2,6 +2,7 @@
 require("dotenv").config();
 const util = require("../helpers/Utils");
 const statusCode = require("../config/status.config.js");
+const fs = require("fs");
 
 // Middleware will continue if the token is inside the local storage
 const validate = (schema) => async (req, res, next) => {
@@ -14,6 +15,15 @@ const validate = (schema) => async (req, res, next) => {
     return next();
   } catch (err) {
     console.log("err", err);
+    if (req.file) {
+      fs.unlink(req.file.path, (err) => {
+        if (err) {
+          /* HANLDE ERROR */
+        }
+        console.log(`successfully deleted ${req.file.path}`);
+      });
+    }
+
     // More logic goes here
     if (err.type == "required") {
       util.setError("400", `${err.message}`, statusCode.CODE_ERROR.EMPTY);
