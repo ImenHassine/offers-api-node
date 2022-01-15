@@ -47,6 +47,7 @@ exports.add = async (req, res) => {
       file: element.path,
       size: element.size,
       extension: element.mimetype,
+      createdBy: req.body.createdBy,
     });
   });
   const newData = {

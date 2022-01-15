@@ -1,5 +1,7 @@
 const db = require("../models");
 const Model = db.shops;
+const Document = db.documents;
+
 const { checkDoesNotExist } = require("../services/checkExist");
 const {
   addModel,
@@ -15,6 +17,13 @@ exports.findAll = async (req, res) => {
 
   const { arrayCondition } = req;
   const attributes = ["deleted", "deletedBy"];
+  const includes = [
+    {
+      attributes: { exclude: ["deleted"] },
+      model: Document,
+      as: "documents_shops",
+    },
+  ];
 
   return (
     await getAllModel(
@@ -24,22 +33,39 @@ exports.findAll = async (req, res) => {
       size,
       arrayCondition,
       "",
-      "",
+      includes,
       attributes
     )
   ).send(res);
 };
 
 exports.add = async (req, res) => {
+  const images = [];
+  req.body.files.forEach((element) => {
+    images.push({
+      file: element.path,
+      size: element.size,
+      extension: element.mimetype,
+      createdBy: req.body.createdBy,
+    });
+  });
   const newData = {
     name: req.body.name,
     address: req.body.address,
     location_x: req.body.location_x,
     location_y: req.body.location_y,
+    documents_shops: images,
     createdBy: req.body.createdBy,
   };
+  const includes = [
+    {
+      attributes: { exclude: ["deleted"] },
+      model: Document,
+      as: "documents_shops",
+    },
+  ];
 
-  return (await addModel(nameModel, Model, newData)).send(res);
+  return (await addModel(nameModel, Model, newData, includes)).send(res);
 };
 
 exports.delete = async (req, res) => {
