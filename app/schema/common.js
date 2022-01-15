@@ -1,6 +1,9 @@
 "use strict";
 const yup = require("yup");
-
+const {
+  checkIfImageIsCorrectType,
+  checkIfFileIsTooBig,
+} = require("../helpers/validation");
 const createdSchema = yup.object({
   body: yup.object({
     createdBy: yup
@@ -37,7 +40,19 @@ const deletedSchema = yup.object({
 
 const fileSchema = yup.object({
   body: yup.object({
-    file: yup.object().required("file is a required field"),
+    file: yup
+      .object()
+      .required("file is a required field")
+      .test(
+        "is-correct-file",
+        "Only .png, .jpg and .jpeg format allowed",
+        checkIfImageIsCorrectType
+      )
+      .test(
+        "is-big-file",
+        "File is too large (file > 2MB)",
+        checkIfFileIsTooBig
+      ),
   }),
 });
 const schema = {

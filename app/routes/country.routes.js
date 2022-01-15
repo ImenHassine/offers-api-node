@@ -6,12 +6,12 @@ module.exports = (app) => {
     createdSchema,
     updatedSchema,
     deletedSchema,
-    fileSchema
+    fileSchema,
   } = require("../schema/common");
   const filter = require("../middleware/filter");
   const router = require("express").Router();
   const multer = require("multer");
-  const upload = multer({ dest: "documents/images/countries" });
+  const upload = multer({ dest: "documents/images" });
   // const upload = multer();
   // const storage = multer.diskStorage({
   //   destination: function (req, file, cb) {
