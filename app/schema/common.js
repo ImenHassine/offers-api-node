@@ -5,6 +5,7 @@ const {
   checkIfFileIsTooBig,
   checkIfImagesIsCorrectType,
   checkIfFilesIsTooBig,
+  checkIfEmpty,
 } = require("../helpers/validation");
 const createdSchema = yup.object({
   body: yup.object({
@@ -63,6 +64,7 @@ const filesSchema = yup.object({
     files: yup
       .array()
       .required("files is a required field")
+      .test("is-empty", "Files is a required field", checkIfEmpty)
       .test(
         "are-correct-files",
         "Only .png, .jpg and .jpeg format allowed",

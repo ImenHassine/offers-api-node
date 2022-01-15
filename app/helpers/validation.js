@@ -39,3 +39,8 @@ exports.checkIfFilesIsTooBig = (files) => {
   });
   return valid;
 };
+
+exports.checkIfEmpty = (files) => {
+  if (!files.length) return false;
+  return true;
+};
