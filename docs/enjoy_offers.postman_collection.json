@@ -968,8 +968,34 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\":\"Clothes\",\n    \"code\":\"10\",\n    \"description\":\"Clothes\",\n    \"createdBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "clothes",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "clothes",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "createdBy",
+									"value": "9d02b539-f962-4305-993c-454fd4f3064d",
+									"type": "text"
+								},
+								{
+									"key": "icon",
+									"type": "file",
+									"src": "/home/paypos/Downloads/Icon material-computer/Icon material-computer.png"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1125,7 +1151,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3MGVkYjRhLTQxMTUtNDg2Mi05ZjFjLWM0N2FkZTQyNzlkMSIsImlhdCI6MTYxODMxNjY4NiwiZXhwIjoxNjE4NDAzMDg2fQ.DFiIhcT8WA3VhK5O_wb0AdW6gq3dksc1oBRgmUvl61Y",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -1133,8 +1159,34 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\":\"Qatar\",\n    \"code\":\"10\",\n    \"description\":\"Qatar\",\n    \"createdBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Emirates",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Emirates",
+									"type": "text"
+								},
+								{
+									"key": "createdBy",
+									"value": "9d02b539-f962-4305-993c-454fd4f3064d",
+									"type": "text"
+								},
+								{
+									"key": "icon",
+									"type": "file",
+									"src": "/home/paypos/Downloads/Icon material-computer/Icon material-computer.png"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1220,13 +1272,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/subscription",
+							"raw": "{{url}}/api/country",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"subscription"
+								"country"
 							]
 						}
 					},
@@ -1273,6 +1325,164 @@
 			]
 		},
 		{
+			"name": "country-category",
+			"item": [
+				{
+					"name": "create country-category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3MGVkYjRhLTQxMTUtNDg2Mi05ZjFjLWM0N2FkZTQyNzlkMSIsImlhdCI6MTYxODMxNjY4NiwiZXhwIjoxNjE4NDAzMDg2fQ.DFiIhcT8WA3VhK5O_wb0AdW6gq3dksc1oBRgmUvl61Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Qatar\",\n    \"code\":\"10\",\n    \"description\":\"Qatar\",\n    \"createdBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/country",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"country"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update country-category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Clothes\",\n    \"code\":\"20\",\n    \"description\":\"Clothes\",\n    \"updatedBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/country-category/96c1bac2-6270-4fc0-a809-7d7bf3706d80",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"country-category",
+								"96c1bac2-6270-4fc0-a809-7d7bf3706d80"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get country-category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBhMDE2ZWQxLWMzOWUtNDI2Mi1hMWMxLTYxODA4ZDc0ZjA0ZSIsImlhdCI6MTYxODk5NDI4NywiZXhwIjoxNjE5MDgwNjg3fQ.69wOtdCj9j304JPVmyHEpCAQHLt7sgzHL1cWXTZOoJM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/country-category",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"country-category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete country-category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"activity\":\"recharge\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/country-category/2a681c93-9e00-4193-9a89-eb9b429b82b1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"country-category",
+								"2a681c93-9e00-4193-9a89-eb9b429b82b1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Offer",
 			"item": [
 				{
@@ -1291,8 +1501,56 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\":\"Clothes\",\n    \"code\":\"10\",\n    \"description\":\"Clothes\",\n    \"createdBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/home/paypos/Downloads/Icon material-computer/Icon material-computer.png",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "Clothes1123",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Clothes",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "ShopId",
+									"value": "df27a13f-bb1c-4054-944f-71f34f41742e",
+									"type": "text"
+								},
+								{
+									"key": "CountryCategoryId",
+									"value": "072802d7-0cf2-4c8a-b688-7202e63303ad",
+									"type": "text"
+								},
+								{
+									"key": "createdBy",
+									"value": "9d02b539-f962-4305-993c-454fd4f3064d",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/home/paypos/Downloads/Icon material-computer/Icon material-computer.png",
+									"disabled": true
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1509,8 +1767,29 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\":\"Clothes\",\n    \"code\":\"10\",\n    \"description\":\"Clothes\",\n    \"createdBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Florison",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "rue 10",
+									"type": "text"
+								},
+								{
+									"key": "createdBy",
+									"value": "9d02b539-f962-4305-993c-454fd4f3064d",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/home/paypos/Downloads/Icon material-computer/Icon material-computer.png"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1898,6 +2177,224 @@
 							"path": [
 								"api",
 								"subscription",
+								"8cfcb44a-9601-4308-840f-5b7b3a1722b2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Document",
+			"item": [
+				{
+					"name": "create subscription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3MGVkYjRhLTQxMTUtNDg2Mi05ZjFjLWM0N2FkZTQyNzlkMSIsImlhdCI6MTYxODMxNjY4NiwiZXhwIjoxNjE4NDAzMDg2fQ.DFiIhcT8WA3VhK5O_wb0AdW6gq3dksc1oBRgmUvl61Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\":\"monthly\",\n    \"per\":\"Month\",\n    \"price\":\"40\",\n    \"description\":\"Clothes\",\n    \"createdBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/subscription",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update subscription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Clothes\",\n    \"code\":\"20\",\n    \"description\":\"Clothes\",\n    \"updatedBy\":\"9d02b539-f962-4305-993c-454fd4f3064d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/subscription/96c1bac2-6270-4fc0-a809-7d7bf3706d80",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"subscription",
+								"96c1bac2-6270-4fc0-a809-7d7bf3706d80"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get document",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBhMDE2ZWQxLWMzOWUtNDI2Mi1hMWMxLTYxODA4ZDc0ZjA0ZSIsImlhdCI6MTYxODk5NDI4NywiZXhwIjoxNjE5MDgwNjg3fQ.69wOtdCj9j304JPVmyHEpCAQHLt7sgzHL1cWXTZOoJM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/subscription",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one document",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBhMDE2ZWQxLWMzOWUtNDI2Mi1hMWMxLTYxODA4ZDc0ZjA0ZSIsImlhdCI6MTYxODk5NDI4NywiZXhwIjoxNjE5MDgwNjg3fQ.69wOtdCj9j304JPVmyHEpCAQHLt7sgzHL1cWXTZOoJM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/document",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete document",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/document/8cfcb44a-9601-4308-840f-5b7b3a1722b2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"document",
 								"8cfcb44a-9601-4308-840f-5b7b3a1722b2"
 							]
 						}
