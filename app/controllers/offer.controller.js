@@ -1,6 +1,8 @@
-const  Util  = require("../helpers/Utils");
+const Util = require("../helpers/Utils");
 const db = require("../models");
 const Model = db.offers;
+const Document = db.documents;
+
 const { checkDoesNotExist } = require("../services/checkExist");
 const {
   addModel,
@@ -16,6 +18,13 @@ exports.findAll = async (req, res) => {
 
   const { arrayCondition } = req;
   const attributes = ["deleted", "deletedBy"];
+  const includes = [
+    {
+      attributes: { exclude: ["deleted"] },
+      model: Document,
+      as: "documents_offers",
+    },
+  ];
 
   return (
     await getAllModel(
@@ -25,35 +34,47 @@ exports.findAll = async (req, res) => {
       size,
       arrayCondition,
       "",
-      "",
+      includes,
       attributes
     )
   ).send(res);
 };
 
 exports.add = async (req, res) => {
+  const images = [];
+  req.body.files.forEach((element) => {
+    images.push({
+      file: element.path,
+      size: element.size,
+      extension: element.mimetype,
+    });
+  });
   const newData = {
     title: req.body.title,
     price: req.body.price,
     discount: req.body.discount,
     description: req.body.description,
-    images: req.body.images,
+    documents_offers: images,
     ShopId: req.body.ShopId,
     CountryCategoryId: req.body.CountryCategoryId,
     createdBy: req.body.createdBy,
   };
-// Test shopId exist
-// Test countryCatID exist
-// Import image
-console.log("redddd",req.body)
-// var documentData = Util.uploadDocument(req.body.documents, req.body.ShopId, 'many');
-// if (documentData.etat == 'echec') {
-//   logger.error(`Echec ${documentData.info}`);
-//   util.setError(400, documentData.info, status_code.CODE_ERROR.TYPE);
-//   return util.send(res);
-// }
+  // Test shopId exist
+  // Test countryCatID exist
+  // Import image done
+  console.log("req.body", req.body);
+  console.log("newData", newData);
+  console.log("images", images);
 
-  return (await addModel(nameModel, Model, newData)).send(res);
+  const includes = [
+    {
+      attributes: { exclude: ["deleted"] },
+      model: Document,
+      as: "documents_offers",
+    },
+  ];
+
+  return (await addModel(nameModel, Model, newData, includes)).send(res);
 };
 
 exports.delete = async (req, res) => {
@@ -70,7 +91,6 @@ exports.findOne = async (req, res) => {
   const { id } = req.params;
   const arrayCondition = [{ deleted: 0 }, { id: id }];
   const attributes = ["deleted", "deletedBy"];
-
   return (
     await getAModel(nameModel, Model, arrayCondition, null, attributes)
   ).send(res);

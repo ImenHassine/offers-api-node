@@ -50,9 +50,11 @@ exports.getAllModel = async (
   }
 };
 
-exports.addModel = async (name, model, newModel) => {
+exports.addModel = async (name, model, newModel, include = null) => {
   try {
-    const theModel = await model.create(newModel);
+    const theModel = include
+      ? await model.create(newModel, { include: include })
+      : await model.create(newModel);
     log4j.loggerinfo.info(`${name} Added!`);
     util.setSuccess(201, `${name} Added!`, theModel);
     return util;
