@@ -1,18 +1,41 @@
-exports.checkIfImageIsCorrectType = (value) => {
-  console.log("value", value);
-  if (!value) return true;
+exports.checkIfImageIsCorrectType = (file) => {
+  if (!file) return true;
   if (
-    value.mimetype === "image/png" ||
-    value.mimetype === "image/jpg" ||
-    value.mimetype === "image/jpeg"
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/jpeg"
   ) {
     return true;
   }
   return false;
 };
 
-exports.checkIfFileIsTooBig = (value) => {
+exports.checkIfFileIsTooBig = (file) => {
   const maxSize = 2 * 1024 * 1024; // for 2MB
-  if (!value) return true;
-  return value.size <= maxSize;
+  if (!file) return true;
+  return file.size <= maxSize;
+};
+
+exports.checkIfImagesIsCorrectType = (files) => {
+  let valid = true;
+  if (!files) return valid;
+  files.forEach((file) => {
+    if (
+      file.mimetype != "png" &&
+      file.mimetype != "jpg" &&
+      file.mimetype != "jpeg"
+    )
+      valid = false;
+  });
+  return true;
+};
+
+exports.checkIfFilesIsTooBig = (files) => {
+  const maxSize = 2 * 1024 * 1024; // for 2MB
+  let valid = true;
+  if (!files) return valid;
+  files.forEach((file) => {
+    if (file.size > maxSize) valid = false;
+  });
+  return valid;
 };

@@ -3,6 +3,8 @@ const yup = require("yup");
 const {
   checkIfImageIsCorrectType,
   checkIfFileIsTooBig,
+  checkIfImagesIsCorrectType,
+  checkIfFilesIsTooBig,
 } = require("../helpers/validation");
 const createdSchema = yup.object({
   body: yup.object({
@@ -55,10 +57,30 @@ const fileSchema = yup.object({
       ),
   }),
 });
+
+const filesSchema = yup.object({
+  body: yup.object({
+    files: yup
+      .array()
+      .required("files is a required field")
+      .test(
+        "are-correct-files",
+        "Only .png, .jpg and .jpeg format allowed",
+        checkIfImagesIsCorrectType
+      )
+      .test(
+        "are-big-files",
+        "Files is too large (file > 2MB)",
+        checkIfFilesIsTooBig
+      ),
+  }),
+});
+
 const schema = {
   createdSchema: createdSchema,
   updatedSchema: updatedSchema,
   deletedSchema: deletedSchema,
   fileSchema: fileSchema,
+  filesSchema: filesSchema,
 };
 module.exports = schema;

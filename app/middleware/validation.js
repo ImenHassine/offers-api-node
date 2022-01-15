@@ -17,13 +17,18 @@ const validate = (schema) => async (req, res, next) => {
     console.log("err", err);
     if (req.file) {
       fs.unlink(req.file.path, (err) => {
-        if (err) {
-          /* HANLDE ERROR */
-        }
+        if (err) console.log(`error in deleting ${err}`);
         console.log(`successfully deleted ${req.file.path}`);
       });
     }
-
+    if (req.files) {
+      req.files.forEach((element) => {
+        fs.unlink(element.path, (err) => {
+          if (err) console.log(`error in deleting ${err}`);
+          console.log(`successfully deleted ${element.path}`);
+        });
+      });
+    }
     // More logic goes here
     if (err.type == "required") {
       util.setError("400", `${err.message}`, statusCode.CODE_ERROR.EMPTY);

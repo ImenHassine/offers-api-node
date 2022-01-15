@@ -45,13 +45,13 @@ exports.add = async (req, res) => {
 // Test shopId exist
 // Test countryCatID exist
 // Import image
-
-var documentData = Util.uploadDocument(req.body.documents, req.body.ShopId, 'many');
-if (documentData.etat == 'echec') {
-  logger.error(`Echec ${documentData.info}`);
-  util.setError(400, documentData.info, status_code.CODE_ERROR.TYPE);
-  return util.send(res);
-}
+console.log("redddd",req.body)
+// var documentData = Util.uploadDocument(req.body.documents, req.body.ShopId, 'many');
+// if (documentData.etat == 'echec') {
+//   logger.error(`Echec ${documentData.info}`);
+//   util.setError(400, documentData.info, status_code.CODE_ERROR.TYPE);
+//   return util.send(res);
+// }
 
   return (await addModel(nameModel, Model, newData)).send(res);
 };

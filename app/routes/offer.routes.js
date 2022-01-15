@@ -6,18 +6,30 @@ module.exports = (app) => {
     createdSchema,
     updatedSchema,
     deletedSchema,
+    filesSchema,
   } = require("../schema/common");
   const filter = require("../middleware/filter");
   const router = require("express").Router();
-  const multer = require('multer');
-  const upload = multer({dest: 'images'})
+  const multer = require("multer");
+  const upload = multer({ dest: "documents/offer" });
 
-  router.post("/", [upload.single('upload'),(req, res,next) => {
-    console.log('req.headers', req.headers);
-    console.log('req.body', req.body);
-    console.log('req.file', req.file);
-    next();
-  },validate(schema), validate(createdSchema)], offer.add);
+  router.post(
+    "/",
+    [
+      upload.array("images"),
+      (req, res, next) => {
+        console.log("req.headers", req.headers);
+        console.log("req.body", req.body);
+        console.log("req.files", req.files);
+        req.body.files = req.files;
+        next();
+      },
+      validate(schema),
+      validate(createdSchema),
+      validate(filesSchema),
+    ],
+    offer.add
+  );
   router.get("/", filter(), offer.findAll);
   router.get("/:id", offer.findOne);
   router.delete("/:id", validate(deletedSchema), offer.delete);
