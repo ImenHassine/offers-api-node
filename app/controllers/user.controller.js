@@ -66,10 +66,10 @@ exports.findAll = (req, res) => {
       },
     })
       .then((data) => {
-        console.log("data.rows.length", data.rows.length);
+        console.log("data.rows.length", data);
 
         if (data.count > 0) {
-          const tab = getPagingData(data, page, limit);
+          const tab = getPagingData(page, limit, data.rows, data.count);
 
           util.setSuccess(200, "User retrieved", tab);
         } else {
@@ -93,7 +93,7 @@ exports.activateUser = async (req, res) => {
   const alteredUser = req.body;
   const id = req.params.id;
   const updatedBy = req.body.updatedBy;
-  if (req.body.activate != (true && false) || !req.body.updatedBy) {
+  if (req.body.activate != ("true" && "false") || !req.body.updatedBy) {
     util.setError(400, "Please provide complete details");
     return util.send(res);
   }

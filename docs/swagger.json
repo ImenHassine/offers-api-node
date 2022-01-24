@@ -139,10 +139,6 @@
               "operationId": "postSignup",
               "summary": "Activate or desactivate a user",
             "parameters": [    
-       {
-                    "name": "Authorization",
-                    "in": "header"
-                },
                   {
                       "name": "Authorization",
                       "in": "header"
@@ -160,7 +156,7 @@
                           "type": "object",
                           "properties": {
                               "activate": {
-                                  "type": "boolean",
+                                  "type": "string",
                                   "required": true
                               }
                           }
@@ -240,13 +236,8 @@
                     "in": "query",
                     "type": "string",
                     "description": ""
-                },
-                {
-                    "name": "agency",
-                    "in": "query",
-                    "type": "string",
-                    "description": ""
                 }
+
             ],
             "responses": {
                 "200": {
@@ -369,6 +360,12 @@
                             }
                             ,
                             "password": {
+                                "type": "string"
+                            },
+                            "zip_code": {
+                                "type": "string"
+                            },
+                            "city": {
                                 "type": "string"
                             }
                         }
@@ -647,7 +644,13 @@
                 "summary": "Get country-category info",
                 "parameters": [
                     {
-                        "name": "company_id",
+                        "name": "CategoryId",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "CountryId",
                         "in": "query",
                         "type": "string",
                         "description": ""
@@ -689,15 +692,21 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "activity_id": {
+                                "CategoryId": {
                                     "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+,
                                     "required": true
                                 },
-                                "company_id": {
+                                "CountryId": {
                                     "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+,
                                     "required": true
                                 },
-                                "created_by": {
+                                "createdBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -746,7 +755,7 @@
                       "schema": {
                         "type": "object",
                         "properties": {
-                          "deleted_by": {
+                          "deletedBy": {
                             "type": "string",
                             "format": "uuid",
                             "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -813,7 +822,19 @@
                 "summary": "Get subscription info",
                 "parameters": [
                     {
-                        "name": "company_id",
+                        "name": "type",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "per",
                         "in": "query",
                         "type": "string",
                         "description": ""
@@ -855,15 +876,23 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "label": {
+                                "type": {
                                     "type": "string",
                                     "required": true
                                 },
-                                "image": {
+                                "per": {
                                     "type": "string",
                                     "required": true
                                 },
-                                "created_by": {
+                                "price": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "createdBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -912,7 +941,7 @@
                       "schema": {
                         "type": "object",
                         "properties": {
-                          "deleted_by": {
+                          "deletedBy": {
                             "type": "string",
                             "format": "uuid",
                             "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -994,15 +1023,23 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "label": {
+                                "type": {
                                     "type": "string",
                                     "required": true
                                 },
-                                "image": {
+                                "per": {
                                     "type": "string",
                                     "required": true
                                 },
-                                "updated_by": {
+                                "price": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "updatedBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1056,13 +1093,24 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "label": {
-                                    "type": "string"
+                                "type": {
+                                    "type": "string",
+                                    "required": true
                                 },
-                                "image": {
-                                    "type": "string"
+                                "per": {
+                                    "type": "string",
+                                    "required": true
                                 },
-                                "updated_by": {
+                                "price": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "required": true
+                                },
+
+                                "updatedBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1100,13 +1148,25 @@
                 "summary": "Get document info",
                 "parameters": [
                     {
-                        "name": "profile_id",
+                        "name": "OfferId",
                         "in": "query",
                         "type": "string",
                         "description": ""
                     },
                     {
-                        "name": "company_id",
+                        "name": "ShopId",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "CategoryId",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "CountryId",
                         "in": "query",
                         "type": "string",
                         "description": ""
@@ -1154,10 +1214,7 @@
                                 "description": {
                                     "type": "string"
                                 },
-                                "company_id": {
-                                    "type": "string"
-                                },
-                                "created_by": {
+                                "createdBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1206,7 +1263,7 @@
                       "schema": {
                         "type": "object",
                         "properties": {
-                          "deleted_by": {
+                          "deletedBy": {
                             "type": "string",
                             "format": "uuid",
                             "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1294,7 +1351,7 @@
                                 "description": {
                                     "type": "string"
                                 },
-                                "updated_by": {
+                                "updatedBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1354,7 +1411,7 @@
                                 "description": {
                                     "type": "string"
                                 },
-                                "updated_by": {
+                                "updatedBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1392,6 +1449,12 @@
                 "summary": "Get shop info",
                 "parameters": [
                     {
+                        "name": "name",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
                         "name": "page",
                         "in": "query",
                         "type": "string",
@@ -1428,15 +1491,11 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "type": {
+                                "name": {
                                     "type": "string",
                                     "required": true
                                 },
-                                "code": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "created_by": {
+                                "createdBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1485,7 +1544,7 @@
                       "schema": {
                         "type": "object",
                         "properties": {
-                          "deleted_by": {
+                          "deletedBy": {
                             "type": "string",
                             "format": "uuid",
                             "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1564,15 +1623,15 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "type": {
+                                "name": {
                                     "type": "string",
                                     "required": true
                                 },
-                                "code": {
+                                "address": {
                                     "type": "number",
                                     "required": true
                                 },
-                                "updated_by": {
+                                "updatedBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1676,7 +1735,7 @@
                                     "type": "boolean",
                                     "required": true
                                 },
-                                "created_by": {
+                                "createdBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1725,7 +1784,7 @@
                       "schema": {
                         "type": "object",
                         "properties": {
-                          "deleted_by": {
+                          "deletedBy": {
                             "type": "string",
                             "format": "uuid",
                             "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1804,7 +1863,11 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "label": {
+                                "title": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "description": {
                                     "type": "string",
                                     "required": true
                                 },
@@ -1812,23 +1875,7 @@
                                     "type": "number",
                                     "required": true
                                 },
-                                "icon": {
-                                    "type": "string",
-                                    "required": true
-                                },
-                                "minVal": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "maxVal": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "isdefault": {
-                                    "type": "boolean",
-                                    "required": true
-                                },
-                                "updated_by": {
+                                "updatedBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1935,7 +1982,7 @@
                                     "type": "boolean",
                                     "required": true
                                 },
-                                "created_by": {
+                                "createdBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -1984,7 +2031,7 @@
                       "schema": {
                         "type": "object",
                         "properties": {
-                          "deleted_by": {
+                          "deletedBy": {
                             "type": "string",
                             "format": "uuid",
                             "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -2063,7 +2110,7 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "label": {
+                                "title": {
                                     "type": "string",
                                     "required": true
                                 },
@@ -2071,23 +2118,11 @@
                                     "type": "number",
                                     "required": true
                                 },
-                                "icon": {
+                                "description": {
                                     "type": "string",
                                     "required": true
                                 },
-                                "minVal": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "maxVal": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "isdefault": {
-                                    "type": "boolean",
-                                    "required": true
-                                },
-                                "updated_by": {
+                                "updatedBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -2194,7 +2229,7 @@
                                     "type": "boolean",
                                     "required": true
                                 },
-                                "created_by": {
+                                "createdBy": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -2243,7 +2278,7 @@
                       "schema": {
                         "type": "object",
                         "properties": {
-                          "deleted_by": {
+                          "deletedBy": {
                             "type": "string",
                             "format": "uuid",
                             "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
@@ -2322,31 +2357,38 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "label": {
+                                "title": {
                                     "type": "string",
                                     "required": true
                                 },
-                                "code": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "icon": {
+                                "price": {
                                     "type": "string",
                                     "required": true
                                 },
-                                "minVal": {
-                                    "type": "number",
+                                "description": {
+                                    "type": "string",
                                     "required": true
                                 },
-                                "maxVal": {
-                                    "type": "number",
+                                "discount": {
+                                    "type": "string",
                                     "required": true
                                 },
-                                "isdefault": {
-                                    "type": "boolean",
+                                "available": {
+                                    "type": "string",
                                     "required": true
                                 },
-                                "updated_by": {
+                                "CountryCategoryId": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+,                                    "required": true
+                                },
+                                "updatedBy": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                },
+                                "ShopId": {
                                     "type": "string",
                                     "format": "uuid",
                                     "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
