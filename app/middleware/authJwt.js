@@ -26,7 +26,7 @@ verifyToken = (req, res, next) => {
     req.body.updatedBy = decoded.id;
     req.body.deletedBy = decoded.id;
     req.body.userId = decoded.id;
-
+    console.log('req',req.body)
     next();
   });
 };

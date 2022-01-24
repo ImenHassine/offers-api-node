@@ -5,11 +5,11 @@ const cors = require("cors");
 const log4js = require("log4js");
 const log4j = require("./app/config/configLog4js.js");
 const key = require("./app/config/key.config");
-const path = require('path');
+const path = require("path");
 require("dotenv/config");
 
 const swaggerUi = require("swagger-ui-express");
-// const swaggerDocument = require("./docs/api_swagger.json");
+const swaggerDocument = require("./docs/swagger.json");
 require("events").EventEmitter.defaultMaxListeners = 15;
 const app = express();
 
@@ -38,7 +38,7 @@ app.use(
 
 // app.use(log4js.connectLogger(log4j.loggercheese, { level: "info" }));
 
-// app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // database
 const db = require("./app/models");
@@ -57,7 +57,7 @@ db.sequelize.sync({ alter: true });
 //   console.log('Drop and Resync Database with { force: true }');
 //   initial();
 // });
-app.use('/images', express.static('images'));
+app.use("/images", express.static("images"));
 // app.use('/images', express.static(path.join(__dirname, 'images')));
 // simple route
 app.get("/", (req, res) => {

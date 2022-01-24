@@ -1,0 +1,2387 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Enjoy offer",
+        "description": "My Enjoy offer Application API",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/auth/signin": {
+            "post": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "Login"
+                ],
+                "operationId": "postSignin",
+                "summary": "Login",
+              "parameters": [    
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "required": true
+      
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success login"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the user."
+                    }
+                }
+            }
+        },
+        "/api/auth/signup": {
+          "post": {
+              "x-swagger-router-controller": "Shovel",
+              "tags": [
+                  "Registration"
+              ],
+              "operationId": "postSignUp",
+              "summary": "Auth",
+            "parameters": [    
+                  {
+                      "name": "body",
+                      "in": "body",
+                      "required": true,
+                      "schema": {
+                          "type": "object",
+                          "properties": {
+                              "username": {
+                                  "type": "string",
+                                  "required": true
+                              },
+                              "password": {
+                                  "type": "string",
+                                  "required": true
+      
+                              },
+                              "firstname": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "lastname": {
+                                "type": "string",
+                                "required": true
+      
+                            },
+                            "email": {
+                              "type": "string",
+                              "required": true
+                          }
+                          }
+                      }
+                  }
+              ],
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Success registration"
+                  },
+                  "400": {
+                      "description": "Incomplete data or invalid syntax"
+                  },
+                  "500": {
+                      "description": "Some error occurred while creating the user."
+                  }
+              }
+          }
+      },
+        "/api/activate/user/{id}": {
+          "put": {
+              "x-swagger-router-controller": "Shovel",
+              "tags": [
+                  "Activation/Desactivation"
+              ],
+              "operationId": "postSignup",
+              "summary": "Activate or desactivate a user",
+            "parameters": [    
+       {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                  {
+                      "name": "Authorization",
+                      "in": "header"
+                  },
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "description": ""
+                  },
+                  {
+                      "name": "body",
+                      "in": "body",
+                      "required": true,
+                      "schema": {
+                          "type": "object",
+                          "properties": {
+                              "activate": {
+                                  "type": "boolean",
+                                  "required": true
+                              }
+                          }
+                      }
+                  }
+              ],
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Success user has been updated"
+                  },
+                  "400": {
+                      "description": "Incomplete data or invalid syntax"
+                  },
+                  "500": {
+                      "description": "Some error occurred while updating the user."
+                  }
+              }
+          }
+      },        
+      "/api/user": {
+        "get": {
+            "x-swagger-router-controller": "Shovel",
+            "tags": [
+                "user"
+            ],
+            "operationId": "userGet",
+            "summary": "Get user info",
+            "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                {
+                    "name": "page",
+                    "in": "query",
+                    "type": "string",
+                    "description": ""
+                },
+                {
+                    "name": "size",
+                    "in": "query",
+                    "type": "string",
+                    "description": ""
+                },
+                {
+                    "name": "username",
+                    "in": "query",
+                    "type": "string",
+                    "description": ""
+                },
+                {
+                    "name": "firstname",
+                    "in": "query",
+                    "type": "string",
+                    "description": ""
+                },
+                {
+                    "name": "lastname",
+                    "in": "query",
+                    "type": "string",
+                    "description": ""
+                },
+                {
+                    "name": "email",
+                    "in": "query",
+                    "type": "string",
+                    "description": ""
+                },
+                {
+                    "name": "city",
+                    "in": "query",
+                    "type": "string",
+                    "description": ""
+                },
+                {
+                    "name": "agency",
+                    "in": "query",
+                    "type": "string",
+                    "description": ""
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Users retrieved "
+                },
+                "500": {
+                    "description": "unexpected error"
+                }
+            }
+        }
+      },
+      "/api/user/{id}": {
+        "delete": {
+            "x-swagger-router-controller": "Shovel",
+            "tags": [
+                "user"
+            ],
+            "operationId": "deletuser",
+            "summary": "Delete user",
+            "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": ""
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success, user has been deleted"
+                },
+                "404": {
+                    "description": "Cannot find user with the id"
+                },
+                "405": {
+                    "description": "Method not allowed"
+                },
+                "500": {
+                    "description": "unexpected error"
+                }
+            }
+        },
+        "get": {
+            "x-swagger-router-controller": "Shovel",
+            "tags": [
+                "user"
+            ],
+            "operationId": "getuser",
+            "summary": "Get user by id",
+            "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": ""
+                }
+            ],
+            "consumes": [
+                "application/json"
+            ],
+            "produces": [
+                "application/json"
+            ],
+            "responses": {
+                "200": {
+                    "description": "user retrieved"
+                },
+                "404": {
+                    "description": "Cannot find user with the id"
+                },
+                "405": {
+                    "description": "Method not allowed"
+                },
+                "500": {
+                    "description": "unexpected error"
+                }
+            }
+        },
+        "patch": {
+            "x-swagger-router-controller": "Shovel",
+            "tags": [
+                "user"
+            ],
+            "operationId": "putuser",
+            "summary": "Update a user",
+            "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": ""
+                },
+                {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "username": {
+                                "type": "string"
+                            },
+                            "firstname": {
+                                "type": "string"
+                            },
+                            "lastname": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string"
+                            }
+                            ,
+                            "password": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            ],
+            "consumes": [
+                "application/json"
+            ],
+            "produces": [
+                "application/json"
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success user has been updated"
+                },
+                "204": {
+                    "description": "Content can not be empty"
+                },
+                "400": {
+                    "description": "Incomplete data or invalid syntax"
+                },
+                "404": {
+                    "description": "Cannot find user with the id"
+                },
+                "405": {
+                    "description": "Method not allowed"
+                },
+                "500": {
+                    "description": "Some error occurred "
+                }
+            }
+        },
+        "put": {
+            "x-swagger-router-controller": "Shovel",
+            "tags": [
+                "user"
+            ],
+            "operationId": "putuser",
+            "summary": "Update all the fields of a user",
+            "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header"
+                },
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": ""
+                },
+                {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "username": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "firstname": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "lastname": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "email": {
+                                "type": "string",
+                                "required": true
+                            }
+                            ,
+                            "password": {
+                                "type": "string",
+                                "required": true
+                            }
+                        }
+                    }
+                }
+            ],
+            "consumes": [
+                "application/json"
+            ],
+            "produces": [
+                "application/json"
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success user has been updated"
+                },
+                "204": {
+                    "description": "Content can not be empty"
+                },
+                "400": {
+                    "description": "Incomplete data or invalid syntax"
+                },
+                "404": {
+                    "description": "Cannot find user with the id"
+                },
+                "405": {
+                    "description": "Method not allowed"
+                },
+                "500": {
+                    "description": "Some error occurred "
+                }
+            }
+        }
+      }
+      ,
+      "/api/user/forgot_password": {
+        "post": {
+            "x-swagger-router-controller": "Shovel",
+            "tags": [
+                "Reset password"
+            ],
+            "operationId": "forgot_passwordPost",
+            "summary": "Forgot password",
+            "parameters": [
+                {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "required": true
+                            }
+                        }
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success user has been updated"
+                },
+                "204": {
+                    "description": "Content can not be empty"
+                },
+                "400": {
+                    "description": "Incomplete data or invalid syntax"
+                },
+                "404": {
+                    "description": "Cannot find user with the id"
+                },
+                "405": {
+                    "description": "Method not allowed"
+                },
+                "500": {
+                    "description": "Some error occurred"
+                }
+            }
+        }
+      },
+      "/api/user/reset_password": {
+        "post": {
+            "x-swagger-router-controller": "Shovel",
+            "tags": [
+                "Reset password"
+            ],
+            "operationId": "reset_passwordPost",
+            "summary": "Reset password",
+            "parameters": 
+                [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {                                 
+                                "new_password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success user has been updated"
+                },
+                "204": {
+                    "description": "Content can not be empty"
+                },
+                "400": {
+                    "description": "Incomplete data or invalid syntax"
+                },
+                "404": {
+                    "description": "Cannot find user with the id"
+                },
+                "405": {
+                    "description": "Method not allowed"
+                },
+                "500": {
+                    "description": "Some error occurred "
+                }
+            }
+        }
+      },
+      "/api/user/change_password": {
+        "post": {
+            "x-swagger-router-controller": "Shovel",
+            "tags": [
+                "Change password"
+            ],
+            "operationId": "forgot_passwordPost",
+            "summary": "Forgot password",
+            "parameters": [
+              {
+                "name": "Authorization",
+                "in": "header"
+            },
+            {
+                "name": "id",
+                "in": "path",
+                "description": ""
+            },
+            {
+                "name": "body",
+                "in": "body",
+                "required": true,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "old_password": {
+                            "type": "string",
+                            "required": true
+                        },
+                        "new_password": {
+                            "type": "string",
+                            "required": true
+                        }
+                    }
+                }
+            }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success user has been updated"
+                },
+                "204": {
+                    "description": "Content can not be empty"
+                },
+                "400": {
+                    "description": "Incomplete data or invalid syntax"
+                },
+                "404": {
+                    "description": "Cannot find user with the id"
+                },
+                "405": {
+                    "description": "Method not allowed"
+                },
+                "500": {
+                    "description": "Some error occurred"
+                }
+            }
+        }
+      },
+        "/api/country-category": {
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "country-category"
+                ],
+                "operationId": "country-categoryGet",
+                "summary": "Get country-category info",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success "
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "post": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "country-category"
+                ],
+                "operationId": "postcountry-category",
+                "summary": "Assign an activity to a company",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "activity_id": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "company_id": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "created_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success, country-category has been created"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the country-category."
+                    }
+                }
+            }
+        },
+        "/api/country-category/{id}": {
+            "delete": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "country-category"
+                ],
+                "operationId": "deletcountry-category",
+                "summary": "Delete country-category",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                      "name": "body",
+                      "in": "body",
+                      "required": true,
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "deleted_by": {
+                            "type": "string",
+                            "format": "uuid",
+                            "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                          }
+                        }
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success, country-category has been deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "country-category"
+                ],
+                "operationId": "getcountry-category",
+                "summary": "Get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/api/subscription": {
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "subscription"
+                ],
+                "operationId": "subscriptionGet",
+                "summary": "Get subscription info",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Activities retrieved "
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "post": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "subscription"
+                ],
+                "operationId": "postsubscription",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "label": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "image": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "created_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success, subscription has been created"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the subscription."
+                    }
+                }
+            }
+        },
+        "/api/subscription/{id}": {
+            "delete": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "subscription"
+                ],
+                "operationId": "deletsubscription",
+                "summary": "Delete subscription",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                      "name": "body",
+                      "in": "body",
+                      "required": true,
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "deleted_by": {
+                            "type": "string",
+                            "format": "uuid",
+                            "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                          }
+                        }
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success, subscription has been deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "subscription"
+                ],
+                "operationId": "getsubscription",
+                "summary": "Get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "subscription retrieved"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "put": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "subscription"
+                ],
+                "operationId": "putsubscription",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "label": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "image": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "updated_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success settings has been updated"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the settings."
+                    }
+                }
+            },
+            "patch": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "subscription"
+                ],
+                "operationId": "subscriptionPatch",
+                "summary": "Update a single field or more",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "uuid",
+                        "description": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "label": {
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "type": "string"
+                                },
+                                "updated_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "subscription updated"
+                    },
+                    "204": {
+                        "description": "Content can not be empty"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            }
+        },
+        "/api/document": {
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "document"
+                ],
+                "operationId": "documentGet",
+                "summary": "Get document info",
+                "parameters": [
+                    {
+                        "name": "profile_id",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Documents retrieved "
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "post": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "document"
+                ],
+                "operationId": "postdocument",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "file": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "company_id": {
+                                    "type": "string"
+                                },
+                                "created_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success, document has been created"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the document."
+                    }
+                }
+            }
+        },
+        "/api/document/{id}": {
+            "delete": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "document"
+                ],
+                "operationId": "deletdocument",
+                "summary": "Delete document",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                      "name": "body",
+                      "in": "body",
+                      "required": true,
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "deleted_by": {
+                            "type": "string",
+                            "format": "uuid",
+                            "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                          }
+                        }
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success, document has been deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "document"
+                ],
+                "operationId": "getdocument",
+                "summary": "Get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Document retrieved"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "put": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "document"
+                ],
+                "operationId": "putdocument",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "file": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "updated_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success settings has been updated"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the settings."
+                    }
+                }
+            },
+            "patch": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "document"
+                ],
+                "operationId": "documentPatch",
+                "summary": "Update a single field or more",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "uuid",
+                        "description": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "file": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "updated_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Document updated"
+                    },
+                    "204": {
+                        "description": "Content can not be empty"
+                    },
+                    "404": {
+                        "description": "Cannot find document with the id"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            }
+        },
+        "/api/shop": {
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "shop"
+                ],
+                "operationId": "shopGet",
+                "summary": "Get shop info",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Type users retrieved "
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "post": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "shop"
+                ],
+                "operationId": "postshop",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "code": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "created_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success, shop has been created"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the shop."
+                    }
+                }
+            }
+        },
+        "/api/shop/{id}": {
+            "delete": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "shop"
+                ],
+                "operationId": "deletshop",
+                "summary": "Delete shop",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                      "name": "body",
+                      "in": "body",
+                      "required": true,
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "deleted_by": {
+                            "type": "string",
+                            "format": "uuid",
+                            "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                          }
+                        }
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success, shop has been deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "shop"
+                ],
+                "operationId": "getshop",
+                "summary": "Get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Supplier retrieved"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "put": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "shop"
+                ],
+                "operationId": "putshop",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "code": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "updated_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success settings has been updated"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the settings."
+                    }
+                }
+            }
+        },
+        "/api/category": {
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "category"
+                ],
+                "operationId": "categoryGet",
+                "summary": "Get category info",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Categories retrieved "
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "post": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "category"
+                ],
+                "operationId": "postcategory",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "label": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "code": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "icon": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "minVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "maxVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "isdefault": {
+                                    "type": "boolean",
+                                    "required": true
+                                },
+                                "created_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success, category has been created"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the category."
+                    }
+                }
+            }
+        },
+        "/api/category/{id}": {
+            "delete": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "category"
+                ],
+                "operationId": "deletcategory",
+                "summary": "Delete category",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                      "name": "body",
+                      "in": "body",
+                      "required": true,
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "deleted_by": {
+                            "type": "string",
+                            "format": "uuid",
+                            "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                          }
+                        }
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success, category has been deleted"
+                    },
+                    "404": {
+                        "description": "Cannot find category with the id"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "category"
+                ],
+                "operationId": "getcategory",
+                "summary": "Get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Category retrieved"
+                    },
+                    "404": {
+                        "description": "Cannot find category with the id"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "patch": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "category"
+                ],
+                "operationId": "putcategory",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "label": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "code": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "icon": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "minVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "maxVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "isdefault": {
+                                    "type": "boolean",
+                                    "required": true
+                                },
+                                "updated_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success category has been updated"
+                    },
+                    "204": {
+                        "description": "Content can not be empty"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "404": {
+                        "description": "Cannot find category with the id"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the settings."
+                    }
+                }
+            }
+        },
+        "/api/country": {
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "country"
+                ],
+                "operationId": "countryGet",
+                "summary": "Get country info",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Categories retrieved "
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "post": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "country"
+                ],
+                "operationId": "postcountry",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "label": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "code": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "icon": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "minVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "maxVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "isdefault": {
+                                    "type": "boolean",
+                                    "required": true
+                                },
+                                "created_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success, country has been created"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the country."
+                    }
+                }
+            }
+        },
+        "/api/country/{id}": {
+            "delete": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "country"
+                ],
+                "operationId": "deletcountry",
+                "summary": "Delete country",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                      "name": "body",
+                      "in": "body",
+                      "required": true,
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "deleted_by": {
+                            "type": "string",
+                            "format": "uuid",
+                            "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                          }
+                        }
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success, country has been deleted"
+                    },
+                    "404": {
+                        "description": "Cannot find country with the id"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "country"
+                ],
+                "operationId": "getcountry",
+                "summary": "Get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "country retrieved"
+                    },
+                    "404": {
+                        "description": "Cannot find country with the id"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "patch": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "country"
+                ],
+                "operationId": "putcountry",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "label": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "code": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "icon": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "minVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "maxVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "isdefault": {
+                                    "type": "boolean",
+                                    "required": true
+                                },
+                                "updated_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success country has been updated"
+                    },
+                    "204": {
+                        "description": "Content can not be empty"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "404": {
+                        "description": "Cannot find country with the id"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the settings."
+                    }
+                }
+            }
+        },
+        "/api/offer": {
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "offer"
+                ],
+                "operationId": "offerGet",
+                "summary": "Get offer info",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Categories retrieved "
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "post": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "offer"
+                ],
+                "operationId": "postoffer",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "label": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "code": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "icon": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "minVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "maxVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "isdefault": {
+                                    "type": "boolean",
+                                    "required": true
+                                },
+                                "created_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success, offer has been created"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the offer."
+                    }
+                }
+            }
+        },
+        "/api/offer/{id}": {
+            "delete": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "offer"
+                ],
+                "operationId": "deletoffer",
+                "summary": "Delete offer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                      "name": "body",
+                      "in": "body",
+                      "required": true,
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "deleted_by": {
+                            "type": "string",
+                            "format": "uuid",
+                            "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                          }
+                        }
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success, offer has been deleted"
+                    },
+                    "404": {
+                        "description": "Cannot find offer with the id"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "offer"
+                ],
+                "operationId": "getoffer",
+                "summary": "Get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "offer retrieved"
+                    },
+                    "404": {
+                        "description": "Cannot find offer with the id"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "patch": {
+                "x-swagger-router-controller": "Shovel",
+                "tags": [
+                    "offer"
+                ],
+                "operationId": "putoffer",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "label": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "code": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "icon": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "minVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "maxVal": {
+                                    "type": "number",
+                                    "required": true
+                                },
+                                "isdefault": {
+                                    "type": "boolean",
+                                    "required": true
+                                },
+                                "updated_by": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success offer has been updated"
+                    },
+                    "204": {
+                        "description": "Content can not be empty"
+                    },
+                    "400": {
+                        "description": "Incomplete data or invalid syntax"
+                    },
+                    "404": {
+                        "description": "Cannot find offer with the id"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "Some error occurred while creating the settings."
+                    }
+                }
+            }
+        }
+    }
+}

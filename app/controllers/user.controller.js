@@ -93,7 +93,7 @@ exports.activateUser = async (req, res) => {
   const alteredUser = req.body;
   const id = req.params.id;
   const updatedBy = req.body.updatedBy;
-  if (!req.body.activate || !req.body.updatedBy) {
+  if (req.body.activate != (true && false) || !req.body.updatedBy) {
     util.setError(400, "Please provide complete details");
     return util.send(res);
   }
