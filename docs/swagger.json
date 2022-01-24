@@ -686,37 +686,40 @@
                 "summary": "Assign an activity to a company",
                 "parameters": [
                     {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "CategoryId": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
-,
-                                    "required": true
-                                },
-                                "CountryId": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
-,
-                                    "required": true
-                                },
-                                "createdBy": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
-                                }
-                            }
-                        }
+                        "name": "title",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "code",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "createdBy",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7",
+                        "required": true
+                    },
+                    {
+                        "name": "icon",
+                        "in": "formData",
+                        "type": "file",
+                        "required": true
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "multipart/form-data"
                 ],
                 "produces": [
                     "application/json"
@@ -1485,27 +1488,36 @@
                 "summary": "",
                 "parameters": [
                     {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "name": {
-                                    "type": "string",
-                                    "required": true
-                                },
-                                "createdBy": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
-                                }
-                            }
-                        }
+                        "name": "name",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "address",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "createdBy",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
+,
+                        "required": true
+                    },
+                    {
+                        "name": "images",
+                        "in": "formData",
+                        "type": "file",
+                        "required": true
                     }
+
                 ],
                 "consumes": [
-                    "application/json"
+                    "multipart/form-data"
                 ],
                 "produces": [
                     "application/json"
@@ -1952,47 +1964,40 @@
                 "summary": "",
                 "parameters": [
                     {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "label": {
-                                    "type": "string",
-                                    "required": true
-                                },
-                                "code": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "icon": {
-                                    "type": "string",
-                                    "required": true
-                                },
-                                "minVal": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "maxVal": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "isdefault": {
-                                    "type": "boolean",
-                                    "required": true
-                                },
-                                "createdBy": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
-                                }
-                            }
-                        }
+                        "name": "title",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "code",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "createdBy",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7",
+                        "required": true
+                    },
+                    {
+                        "name": "icon",
+                        "in": "formData",
+                        "type": "file",
+                        "required": true
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "multipart/form-data"
                 ],
                 "produces": [
                     "application/json"
@@ -2199,47 +2204,75 @@
                 "summary": "",
                 "parameters": [
                     {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "label": {
-                                    "type": "string",
-                                    "required": true
-                                },
-                                "code": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "icon": {
-                                    "type": "string",
-                                    "required": true
-                                },
-                                "minVal": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "maxVal": {
-                                    "type": "number",
-                                    "required": true
-                                },
-                                "isdefault": {
-                                    "type": "boolean",
-                                    "required": true
-                                },
-                                "createdBy": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7"
-                                }
-                            }
-                        }
+                        "name": "title",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "price",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "discount",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "ShopId",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7",
+                        "required": true
+                    },
+                    {
+                        "name": "CountryCategoryId",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7",
+                        "required": true
+                    },
+                    {
+                        "name": "createdBy",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "2d8293c9-2b37-47a2-a081-bcd3fc62a1a7",
+                        "required": true
+                    },
+                    {
+                        "name": "images",
+                        "in": "formData",
+                        "type": "file",
+                        "required": true
+                    },
+                    {
+                        "name": "images",
+                        "in": "formData",
+                        "type": "file",
+                        "required": true
+                    },
+                    {
+                        "name": "images",
+                        "in": "formData",
+                        "type": "file",
+                        "required": true
                     }
+
                 ],
                 "consumes": [
-                    "application/json"
+                    "multipart/form-data"
                 ],
                 "produces": [
                     "application/json"
