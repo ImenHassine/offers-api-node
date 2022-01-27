@@ -1,6 +1,6 @@
 const db = require("../models");
 const Model = db.countries_categories;
-const { checkDoesNotExist } = require("../services/checkExist");
+const { checkExist } = require("../services/checkExist");
 const {
   addModel,
   getAllModel,
@@ -36,7 +36,37 @@ exports.add = async (req, res) => {
     CountryId: req.body.CountryId,
     createdBy: req.body.createdBy,
   };
+  const conditionCategory = [{ deleted: 0 }, { id: req.body.CategoryId }];
+  const notExistCategory = await checkExist(
+    "Category",
+    db.categories,
+    conditionCategory,
+    res,
+    true
+  );
+  if (notExistCategory) return;
+  const conditionCountry = [{ deleted: 0 }, { id: req.body.CountryId }];
+  const notExistCountry = await checkExist(
+    "Country",
+    db.countries,
 
+    conditionCountry,
+    res,
+    true
+  );
+  if (notExistCountry) return;
+  const conditionCountryCategory = [
+    { deleted: 0 },
+    { CountryId: req.body.CountryId, CategoryId: req.body.CategoryId },
+  ];
+  const notExistCountryCategory = await checkExist(
+    "Country Category",
+    db.countries,
+    conditionCountryCategory,
+    res,
+    true
+  );
+  if (notExistCountryCategory) return;
   return (await addModel(nameModel, Model, newData)).send(res);
 };
 

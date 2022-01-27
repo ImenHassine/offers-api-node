@@ -6,7 +6,7 @@ const { Op } = db.Sequelize;
 const util = require("../helpers/Utils");
 const statusCode = require("../config/status.config.js");
 
-exports.checkExist = async (name, modal, arrayCondition, res) => {
+exports.checkExist = async (name, modal, arrayCondition, res, bool) => {
   try {
     const theModel = await modal.findOne({
       where: {
@@ -21,7 +21,8 @@ exports.checkExist = async (name, modal, arrayCondition, res) => {
       );
       return util.send(res);
     }
-    return theModel;
+    if (bool) return null;
+    else return theModel;
   } catch (error) {
     util.setError(
       "400",

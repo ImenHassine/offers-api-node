@@ -3,7 +3,7 @@ const db = require("../models");
 const Model = db.offers;
 const Document = db.documents;
 
-const { checkDoesNotExist } = require("../services/checkExist");
+const { checkExist } = require("../services/checkExist");
 const {
   addModel,
   getAllModel,
@@ -61,7 +61,30 @@ exports.add = async (req, res) => {
     createdBy: req.body.createdBy,
   };
   // Test shopId exist
+  const conditionShop = [{ deleted: 0 }, { id: req.body.ShopId }];
+  const notExistShop = await checkExist(
+    "Shop",
+    db.shops,
+    conditionShop,
+    res,
+    true
+  );
+  if (notExistShop) return;
+
   // Test countryCatID exist
+  const conditionCountryCategory = [
+    { deleted: 0 },
+    { id: req.body.CountryCategoryId },
+  ];
+  const notExistCountryCategory = await checkExist(
+    "CountryCategory",
+    db.countries_categories,
+    conditionCountryCategory,
+    res,
+    true
+  );
+  if (notExistCountryCategory) return;
+
   // Import image done
   console.log("req.body", req.body);
   console.log("newData", newData);
