@@ -75,7 +75,7 @@ require("./app/routes/shop.routes")(app);
 require("./app/routes/categoryCountry.routes")(app);
 require("./app/routes/document.routes")(app);
 
-// initial()
+// initial();
 initiateAdmin();
 const PORT = process.env.port || 3000;
 app.listen(PORT, () => {
@@ -106,6 +106,28 @@ async function initiateAdmin() {
   console.log("username", username);
   console.log("email", email);
   console.log("password", password);
+  const roleUser = await Role.findOne({ where: { id: 1 } });
+  if (!roleUser) {
+    Role.create({
+      id: 1,
+      name: "user",
+    });
+  }
+  const roleVisitor = await Role.findOne({ where: { id: 2 } });
+  if (!roleVisitor) {
+    Role.create({
+      id: 2,
+      name: "visitor",
+    });
+  }
+  const roleAdmin = await Role.findOne({ where: { id: 3 } });
+  if (!roleAdmin) {
+    Role.create({
+      id: 3,
+      name: "admin",
+    });
+  }
+
   const userExistsaleusername = await User.findOne({
     where: { deleted: 0, username: username },
     attributes: { exclude: ["deleted"] },
