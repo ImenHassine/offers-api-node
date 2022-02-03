@@ -157,7 +157,7 @@ async function initiateAdmin() {
       activate: true,
       lastname: "admin1",
     }).then((user) => {
-      user.setRoles([4]).then(() => {
+      user.setRoles([3]).then(() => {
         console.log("Admin has been created with id=" + user.id);
       });
     });
