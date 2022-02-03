@@ -108,21 +108,21 @@ async function initiateAdmin() {
   console.log("password", password);
   const roleUser = await Role.findOne({ where: { id: 1 } });
   if (!roleUser) {
-    Role.create({
+    await Role.create({
       id: 1,
       name: "user",
     });
   }
   const roleVisitor = await Role.findOne({ where: { id: 2 } });
   if (!roleVisitor) {
-    Role.create({
+    await Role.create({
       id: 2,
       name: "visitor",
     });
   }
   const roleAdmin = await Role.findOne({ where: { id: 3 } });
   if (!roleAdmin) {
-    Role.create({
+    await Role.create({
       id: 3,
       name: "admin",
     });
@@ -157,7 +157,7 @@ async function initiateAdmin() {
       activate: true,
       lastname: "admin1",
     }).then((user) => {
-      user.setRoles([3]).then(() => {
+      user.setRoles([4]).then(() => {
         console.log("Admin has been created with id=" + user.id);
       });
     });
