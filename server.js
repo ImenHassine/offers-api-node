@@ -58,6 +58,8 @@ db.sequelize.sync({ alter: true });
 //   initial();
 // });
 app.use("/images", express.static("images"));
+app.use("/documents", express.static("documents"));
+
 // app.use('/images', express.static(path.join(__dirname, 'images')));
 // simple route
 app.get("/", (req, res) => {
