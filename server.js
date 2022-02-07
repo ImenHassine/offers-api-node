@@ -78,7 +78,7 @@ require("./app/routes/categoryCountry.routes")(app);
 require("./app/routes/document.routes")(app);
 
 // initial();
-initiateAdmin();
+// initiateAdmin();
 const PORT = process.env.port || 3000;
 app.listen(PORT, () => {
   log4j.loggerinfo.info(`Server is running on port ${PORT}.`);
