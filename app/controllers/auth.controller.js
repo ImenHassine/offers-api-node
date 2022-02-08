@@ -61,20 +61,16 @@ exports.signup = async (req, res) => {
 };
 
 exports.signin = (req, res) => {
-  if (!req.body.username || !req.body.password) {
+  if (!req.body.email || !req.body.password) {
     res.status(400).send({
-      message:
-        "username or password is empty username: " +
-        req.body.username +
-        " password: " +
-        req.body.password,
+      message: "email or password is empty email",
     });
   }
-  console.log("username", req.body.username);
+  console.log("email", req.body.email);
   console.log("password", req.body.password);
   User.findOne({
     where: {
-      username: req.body.username,
+      email: req.body.email,
       deleted: 0,
     },
   })
