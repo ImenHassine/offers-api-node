@@ -16,7 +16,33 @@ exports.findAll = async (req, res) => {
   const { page, size } = req.query;
 
   const { arrayCondition } = req;
-  const attributes = ["deleted", "deletedBy"];
+  let attributes = [
+    "deleted",
+    "deletedBy",
+    "name_ar",
+    "address_ar",
+    "name_fr",
+    "address_fr",
+  ];
+  if (req.url == "/ar") {
+    attributes = [
+      "deleted",
+      "deletedBy",
+      "name",
+      "address",
+      "name_fr",
+      "address_fr",
+    ];
+  } else if (req.url == "/fr") {
+    attributes = [
+      "deleted",
+      "deletedBy",
+      "name_ar",
+      "address_ar",
+      "name",
+      "address",
+    ];
+  }
   const includes = [
     {
       attributes: { exclude: ["deleted"] },

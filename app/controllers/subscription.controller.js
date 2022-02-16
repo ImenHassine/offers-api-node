@@ -14,7 +14,33 @@ exports.findAll = async (req, res) => {
   const { page, size } = req.query;
 
   const { arrayCondition } = req;
-  const attributes = ["deleted", "deletedBy"];
+  let attributes = [
+    "deleted",
+    "deletedBy",
+    "type_ar",
+    "description_ar",
+    "type_fr",
+    "description_fr",
+  ];
+  if (req.url == "/ar") {
+    attributes = [
+      "deleted",
+      "deletedBy",
+      "type",
+      "description",
+      "type_fr",
+      "description_fr",
+    ];
+  } else if (req.url == "/fr") {
+    attributes = [
+      "deleted",
+      "deletedBy",
+      "type_ar",
+      "description_ar",
+      "type",
+      "description",
+    ];
+  }
 
   return (
     await getAllModel(

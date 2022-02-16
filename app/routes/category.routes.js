@@ -34,7 +34,10 @@ module.exports = (app) => {
   router.get("/eng", filter(), category.findAll);
   router.get("/ar", filter(), category.findAll);
 
-  router.get("/:id", category.findOne);
+  router.get("/fr/:id", category.findOne);
+  router.get("/eng/:id", category.findOne);
+  router.get("/ar/:id", category.findOne);
+
   router.delete("/:id", validate(deletedSchema), category.delete);
   router.patch(
     "/:id",

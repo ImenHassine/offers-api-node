@@ -15,14 +15,37 @@ const nameModel = "Category";
 
 exports.findAll = async (req, res) => {
   const { page, size } = req.query;
-  console.log('req',req.url)
+  console.log("req", req.url);
   // console.log('req',req.originalUrl)
-  if(req.url == "/fr"){
-  console.log('reqdddddd')
-
+  let attributes = [
+    "deleted",
+    "deletedBy",
+    "title_ar",
+    "description_ar",
+    "title_fr",
+    "description_fr",
+  ];
+  if (req.url == "/ar") {
+    attributes = [
+      "deleted",
+      "deletedBy",
+      "title",
+      "description",
+      "title_fr",
+      "description_fr",
+    ];
+  } else if (req.url == "/fr") {
+    attributes = [
+      "deleted",
+      "deletedBy",
+      "title_ar",
+      "description_ar",
+      "title",
+      "description",
+    ];
   }
   const { arrayCondition } = req;
-  const attributes = ["deleted", "deletedBy"];
+  // const attributes = ["deleted", "deletedBy"];
 
   return (
     await getAllModel(
