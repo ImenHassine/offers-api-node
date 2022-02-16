@@ -883,6 +883,14 @@
                                     "type": "string",
                                     "required": true
                                 },
+                                "type_ar": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "type_fr": {
+                                    "type": "string",
+                                    "required": true
+                                },
                                 "per": {
                                     "type": "string",
                                     "required": true
@@ -892,6 +900,14 @@
                                     "required": true
                                 },
                                 "description": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "description_ar": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "description_fr": {
                                     "type": "string",
                                     "required": true
                                 },
@@ -1500,6 +1516,30 @@
                         "required": true
                     },
                     {
+                        "name": "name_ar",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "address_ar",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "name_fr",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "address_fr",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
                         "name": "createdBy",
                         "in": "formData",
                         "type": "string",
@@ -1723,30 +1763,36 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "label": {
+                                "title": {
                                     "type": "string",
                                     "required": true
                                 },
+                                "title_ar": {
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "title_fr": {
+                                    "type": "string",
+                                    "required": true
+                                },
+
                                 "code": {
                                     "type": "number",
                                     "required": true
                                 },
-                                "icon": {
+                                "description": {
                                     "type": "string",
                                     "required": true
                                 },
-                                "minVal": {
-                                    "type": "number",
+                                "description_ar": {
+                                    "type": "string",
                                     "required": true
                                 },
-                                "maxVal": {
-                                    "type": "number",
+                                "description_fr": {
+                                    "type": "string",
                                     "required": true
                                 },
-                                "isdefault": {
-                                    "type": "boolean",
-                                    "required": true
-                                },
+
                                 "createdBy": {
                                     "type": "string",
                                     "format": "uuid",
@@ -1970,6 +2016,17 @@
                         "required": true
                     },
                     {
+                        "name": "title_ar",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },                    {
+                        "name": "title_fr",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
                         "name": "code",
                         "in": "formData",
                         "type": "string",
@@ -1977,6 +2034,17 @@
                     },
                     {
                         "name": "description",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "description_ar",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },                    {
+                        "name": "description_fr",
                         "in": "formData",
                         "type": "string",
                         "required": true
@@ -2210,13 +2278,35 @@
                         "required": true
                     },
                     {
-                        "name": "price",
+                        "name": "title_ar",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },                    {
+                        "name": "title_fr",
                         "in": "formData",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "description",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "description_ar",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },                    {
+                        "name": "description_fr",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "price",
                         "in": "formData",
                         "type": "string",
                         "required": true
