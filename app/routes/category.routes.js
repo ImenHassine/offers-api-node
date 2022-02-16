@@ -30,7 +30,10 @@ module.exports = (app) => {
     ],
     category.add
   );
-  router.get("/", filter(), category.findAll);
+  router.get("/fr", filter(), category.findAll);
+  router.get("/eng", filter(), category.findAll);
+  router.get("/ar", filter(), category.findAll);
+
   router.get("/:id", category.findOne);
   router.delete("/:id", validate(deletedSchema), category.delete);
   router.patch(

@@ -51,7 +51,13 @@ exports.add = async (req, res) => {
   });
   const newData = {
     name: req.body.name,
+    name_fr: req.body.name_fr,
+    name_ar: req.body.name_ar,
+
     address: req.body.address,
+    address_fr: req.body.address_fr,
+    address_ar: req.body.address_ar,
+
     location_x: req.body.location_x,
     location_y: req.body.location_y,
     documents_shops: images,

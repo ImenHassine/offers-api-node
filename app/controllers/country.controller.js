@@ -40,8 +40,14 @@ exports.add = async (req, res) => {
 
   const newData = {
     title: req.body.title,
+    title_fr: req.body.title_fr,
+    title_ar: req.body.title_ar,
+
     code: req.body.code,
     description: req.body.description,
+    description_fr: req.body.description_fr,
+    description_ar: req.body.description_ar,
+
     imagePath: req.file.path,
     imageSize: req.file.size,
     imageMimetype: req.file.mimetype,

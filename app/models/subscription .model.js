@@ -10,9 +10,21 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       required: true,
     },
+    type_fr: {
+      type: Sequelize.STRING,
+    },
+    type_ar: {
+      type: Sequelize.STRING,
+    },
     description: {
       type: Sequelize.STRING,
       required: true,
+    },
+    description_fr: {
+      type: Sequelize.STRING,
+    },
+    description_ar: {
+      type: Sequelize.STRING,
     },
     price: {
       type: Sequelize.STRING,

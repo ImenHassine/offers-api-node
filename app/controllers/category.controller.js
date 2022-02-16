@@ -15,7 +15,12 @@ const nameModel = "Category";
 
 exports.findAll = async (req, res) => {
   const { page, size } = req.query;
+  console.log('req',req.url)
+  // console.log('req',req.originalUrl)
+  if(req.url == "/fr"){
+  console.log('reqdddddd')
 
+  }
   const { arrayCondition } = req;
   const attributes = ["deleted", "deletedBy"];
 
@@ -36,11 +41,15 @@ exports.findAll = async (req, res) => {
 exports.add = async (req, res) => {
   const newData = {
     title: req.body.title,
+    title_fr: req.body.title_fr,
+    title_ar: req.body.title_ar,
     code: req.body.code,
     imagePath: req.file.path,
     imageSize: req.file.size,
     imageMimetype: req.file.mimetype,
     description: req.body.description,
+    description_fr: req.body.description_fr,
+    description_ar: req.body.description_ar,
     createdBy: req.body.createdBy,
   };
 

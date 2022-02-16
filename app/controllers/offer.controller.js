@@ -52,9 +52,15 @@ exports.add = async (req, res) => {
   });
   const newData = {
     title: req.body.title,
+    title_fr: req.body.title_fr,
+    title_ar: req.body.title_ar,
+
     price: req.body.price,
     discount: req.body.discount,
     description: req.body.description,
+    description_fr: req.body.description_fr,
+    description_ar: req.body.description_ar,
+
     documents_offers: images,
     ShopId: req.body.ShopId,
     CountryCategoryId: req.body.CountryCategoryId,

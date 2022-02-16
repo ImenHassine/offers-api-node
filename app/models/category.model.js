@@ -10,7 +10,12 @@ module.exports = (sequelize, Sequelize) => {
       },
       title: {
         type: Sequelize.STRING,
-        required: true,
+      },
+      title_fr: {
+        type: Sequelize.STRING,
+      },
+      title_ar: {
+        type: Sequelize.STRING,
       },
       code: {
         type: Sequelize.STRING,
@@ -20,6 +25,13 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         required: true,
       },
+      description_fr: {
+        type: Sequelize.STRING,
+      },
+      description_ar: {
+        type: Sequelize.STRING,
+      },
+
       imagePath: {
         type: Sequelize.STRING,
       },

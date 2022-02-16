@@ -33,8 +33,14 @@ exports.findAll = async (req, res) => {
 exports.add = async (req, res) => {
   const newData = {
     type: req.body.type,
+    type_fr: req.body.type_fr,
+    type_ar: req.body.type_ar,
+
     price: req.body.price,
     description: req.body.description,
+    description_fr: req.body.description_fr,
+    description_ar: req.body.description_ar,
+
     per: req.body.per,
     createdBy: req.body.createdBy,
   };
