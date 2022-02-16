@@ -15,8 +15,14 @@ module.exports = (app) => {
     [validate(schema), validate(createdSchema)],
     subscription.add
   );
-  router.get("/", filter(), subscription.findAll);
-  router.get("/:id", subscription.findOne);
+  router.get("/fr", filter(), subscription.findAll);
+  router.get("/ar", filter(), subscription.findAll);
+  router.get("/eng", filter(), subscription.findAll);
+
+  router.get("/fr/:id", subscription.findOne);
+  router.get("/eng/:id", subscription.findOne);
+  router.get("/ar/:id", subscription.findOne);
+
   router.delete("/:id", validate(deletedSchema), subscription.delete);
   router.patch(
     "/:id",

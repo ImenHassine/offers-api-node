@@ -30,8 +30,14 @@ module.exports = (app) => {
     ],
     offer.add
   );
-  router.get("/", filter(), offer.findAll);
-  router.get("/:id", offer.findOne);
+  router.get("/fr", filter(), offer.findAll);
+  router.get("/ar", filter(), offer.findAll);
+  router.get("/eng", filter(), offer.findAll);
+
+  router.get("/fr/:id", offer.findOne);
+  router.get("/eng/:id", offer.findOne);
+  router.get("/ar/:id", offer.findOne);
+
   router.delete("/:id", validate(deletedSchema), offer.delete);
   router.patch(
     "/:id",

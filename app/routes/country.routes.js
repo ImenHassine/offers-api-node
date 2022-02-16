@@ -60,8 +60,14 @@ module.exports = (app) => {
     ],
     country.add
   );
-  router.get("/", filter(), country.findAll);
-  router.get("/:id", country.findOne);
+  router.get("/fr", filter(), country.findAll);
+  router.get("/ar", filter(), country.findAll);
+  router.get("/eng", filter(), country.findAll);
+
+  router.get("/fr/:id", country.findOne);
+  router.get("/ar/:id", country.findOne);
+  router.get("/eng/:id", country.findOne);
+
   router.delete("/:id", validate(deletedSchema), country.delete);
   router.patch(
     "/:id",

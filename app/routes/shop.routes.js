@@ -27,8 +27,14 @@ module.exports = (app) => {
     ],
     shop.add
   );
-  router.get("/", filter(), shop.findAll);
-  router.get("/:id", shop.findOne);
+  router.get("/ar", filter(), shop.findAll);
+  router.get("/fr", filter(), shop.findAll);
+  router.get("/eng", filter(), shop.findAll);
+
+  router.get("/ar/:id", shop.findOne);
+  router.get("/eng/:id", shop.findOne);
+  router.get("/fr:id", shop.findOne);
+
   router.delete("/:id", validate(deletedSchema), shop.delete);
   router.patch(
     "/:id",
