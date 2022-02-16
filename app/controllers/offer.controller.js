@@ -146,7 +146,33 @@ exports.delete = async (req, res) => {
 exports.findOne = async (req, res) => {
   const { id } = req.params;
   const arrayCondition = [{ deleted: 0 }, { id: id }];
-  const attributes = ["deleted", "deletedBy"];
+  let attributes = [
+    "deleted",
+    "deletedBy",
+    "title_ar",
+    "description_ar",
+    "title_fr",
+    "description_fr",
+  ];
+  if (req.url.split("/")[1] == "ar") {
+    attributes = [
+      "deleted",
+      "deletedBy",
+      "title",
+      "description",
+      "title_fr",
+      "description_fr",
+    ];
+  } else if (req.url.split("/")[1] == "fr") {
+    attributes = [
+      "deleted",
+      "deletedBy",
+      "title_ar",
+      "description_ar",
+      "title",
+      "description",
+    ];
+  }
   return (
     await getAModel(nameModel, Model, arrayCondition, null, attributes)
   ).send(res);

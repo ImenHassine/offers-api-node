@@ -109,7 +109,33 @@ exports.findOne = async (req, res) => {
 exports.findByCode = async (req, res) => {
   const { code } = req.params;
   const arrayCondition = [{ deleted: 0 }, { code: code }];
-  const attributes = ["deleted", "deletedBy"];
+  let attributes = [
+    "deleted",
+    "deletedBy",
+    "title_ar",
+    "description_ar",
+    "title_fr",
+    "description_fr",
+  ];
+  if (req.url.split("/")[1] == "ar") {
+    attributes = [
+      "deleted",
+      "deletedBy",
+      "title",
+      "description",
+      "title_fr",
+      "description_fr",
+    ];
+  } else if (req.url.split("/")[1] == "fr") {
+    attributes = [
+      "deleted",
+      "deletedBy",
+      "title_ar",
+      "description_ar",
+      "title",
+      "description",
+    ];
+  }
 
   return (
     await getAModel("code", Model, arrayCondition, null, attributes)
