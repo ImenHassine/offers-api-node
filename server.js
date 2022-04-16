@@ -79,7 +79,7 @@ require("./app/routes/document.routes")(app);
 
 // initial();
 // initiateAdmin();
-const PORT = process.env.port || 3000;
+const PORT = process.env.port || 30001;
 app.listen(PORT, () => {
   log4j.loggerinfo.info(`Server is running on port ${PORT}.`);
 });

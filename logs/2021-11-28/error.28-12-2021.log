@@ -1,0 +1,5 @@
+[2021-12-28T19:16:31.969] [ERROR] error - TypeError: Cannot read property 'LIST_EMPTY' of undefined
+[2021-12-28T19:23:50.479] [ERROR] error - TypeError: Cannot destructure property `count` of 'undefined' or 'null'.
+[2021-12-28T19:25:21.387] [ERROR] error - TypeError: Cannot destructure property `count` of 'undefined' or 'null'.
+[2021-12-28T19:25:53.230] [ERROR] error - TypeError: Cannot destructure property `count` of 'undefined' or 'null'.
+[2021-12-28T19:43:03.077] [ERROR] error - column "code" of relation "Countries" does not exist

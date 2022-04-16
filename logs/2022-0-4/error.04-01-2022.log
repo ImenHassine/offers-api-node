@@ -1,0 +1,2 @@
+[2022-01-04T17:49:28.761] [ERROR] error - insert or update on table "Offers" violates foreign key constraint "Offers_ShopId_fkey"
+[2022-01-04T17:49:36.604] [ERROR] error - insert or update on table "Offers" violates foreign key constraint "Offers_ShopId_fkey"

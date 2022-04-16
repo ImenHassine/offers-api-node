@@ -1,0 +1,94 @@
+[2022-01-04T17:02:09.652] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:02:40.954] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:02:57.704] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:03:00.592] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:03:07.392] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:18:00.865] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:18:08.530] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:18:40.353] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:18:43.310] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:19:51.784] [INFO] info - Shops list is empty
+[2022-01-04T17:20:41.545] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:20:51.614] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:21:03.544] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:21:09.204] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:21:11.177] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:21:20.399] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:21:21.923] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:21:24.241] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:22:15.264] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:22:19.036] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:22:24.090] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:22:25.569] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:22:27.621] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:22:29.428] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:22:33.561] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:23:02.771] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:23:44.818] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:39:53.418] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:39:59.103] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:40:08.212] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:40:17.950] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:40:35.302] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:41:07.758] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:41:25.834] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:41:27.160] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:41:30.492] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:42:34.098] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:42:39.599] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:42:58.499] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:43:02.061] [INFO] info - country_category list is empty
+[2022-01-04T17:43:14.295] [INFO] info - Subscription list is empty
+[2022-01-04T17:43:21.872] [INFO] info - Country Added!
+[2022-01-04T17:43:28.373] [INFO] info - Category Added!
+[2022-01-04T17:44:17.622] [INFO] info - country_category Added!
+[2022-01-04T17:44:19.942] [INFO] info - country_category Added!
+[2022-01-04T17:44:42.812] [INFO] info - country_category deleted
+[2022-01-04T17:44:46.664] [INFO] info - country_category retrieved
+[2022-01-04T17:47:13.517] [INFO] info - Offers Added!
+[2022-01-04T17:48:16.188] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:48:22.679] [INFO] info - Offers Added!
+[2022-01-04T17:48:51.192] [INFO] info - Category retrieved
+[2022-01-04T17:49:00.619] [INFO] info - Offers Added!
+[2022-01-04T17:49:13.441] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:49:19.004] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:49:26.356] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:50:08.746] [INFO] info - Shops list is empty
+[2022-01-04T17:50:13.617] [INFO] info - Shops Added!
+[2022-01-04T17:50:22.112] [INFO] info - Offers Added!
+[2022-01-04T17:50:28.731] [INFO] info - Offers retrieved
+[2022-01-04T17:51:45.327] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:51:58.265] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:52:14.273] [INFO] info - User registered successfully
+[2022-01-04T17:53:45.426] [INFO] info - Subscription Added!
+[2022-01-04T17:54:20.655] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:54:30.228] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:54:31.279] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:54:34.800] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:54:36.282] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:54:50.369] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:54:53.436] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:54:57.459] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:55:00.303] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:55:05.495] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:55:08.902] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:55:12.412] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:55:25.775] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:55:30.834] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:55:42.446] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:55:43.791] [INFO] info - Server is running on port 3000.
+[2022-01-04T17:56:39.899] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:10:26.097] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:11:26.328] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:12:56.264] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:13:04.957] [INFO] info - Document list is empty
+[2022-01-04T18:16:15.026] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:16:19.055] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:16:34.440] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:16:37.281] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:16:41.173] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:16:43.894] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:20:27.362] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:20:30.167] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:20:41.400] [INFO] info - Server is running on port 3000.
+[2022-01-04T18:21:40.744] [INFO] info - Server is running on port 3000.
